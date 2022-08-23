@@ -19,7 +19,7 @@ function Popmenu({ showBar, popBar }) {
         width: '100vw',
         height: '100vh',
         position: 'fixed',
-        zIndex: 20,
+        zIndex: 100,
         right: !popBar ? '150vw' : null,
         transition: '0.3s ease-in-out',
       }}
