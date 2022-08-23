@@ -1,0 +1,237 @@
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
+import { Button, Container } from '@mui/material';
+import contactDetails from '../../utils/contactDetails';
+import { styled } from '@mui/material/styles';
+
+const Content3 = () => {
+  const styles = (theme) =>
+    styled({
+      multilineColor: {
+        color: 'red',
+      },
+    });
+
+  return (
+    <Box
+      Container
+      sx={{ backgroundColor: 'rgb(8, 16, 40)', border: '0.5px solid gray' }}
+    >
+      <Container sx={{ backgroundColor: 'ineherit' }}>
+        <Grid container spacing={3} pt={3}>
+          <Grid item xs={12} md={7} paddingX={5} pt={5}>
+            <Box sx={{ width: '100%' }}>
+              <form>
+                <Grid container spacing={3}>
+                  <Grid item xs={12} md={6}>
+                    <Typography
+                      variant="p"
+                      sx={{
+                        textAlign: 'left',
+                        fontFamily: 'Source, Sans Pro, sans-serif',
+                        zIndex: 10,
+                        color: 'white',
+                        letterSpacing: 3,
+                        fontWeight: 600,
+                      }}
+                    >
+                      NAME
+                    </Typography>
+                    <TextField
+                      variant="outlined"
+                      type="text"
+                      fullWidth
+                      sx={{
+                        backgroundColor: 'rgb(18, 26, 50)',
+                        mt: 2,
+                        input: {
+                          color: 'white',
+                          fontFamily: 'Source Sans Pro, sans-serif',
+                          fontWeight: 600,
+                        },
+                      }}
+                    />
+                  </Grid>
+                  <Grid item xs={12} md={6}>
+                    <Typography
+                      variant="p"
+                      sx={{
+                        textAlign: 'left',
+                        fontFamily: 'Source, Sans Pro, sans-serif',
+                        zIndex: 10,
+                        color: 'white',
+                        letterSpacing: 3,
+                        fontWeight: 600,
+                      }}
+                    >
+                      EMAIL
+                    </Typography>
+                    <TextField
+                      variant="outlined"
+                      type="text"
+                      fullWidth
+                      sx={{
+                        backgroundColor: 'rgb(18, 26, 50)',
+                        mt: 2,
+                        input: {
+                          color: 'white',
+                          fontFamily: 'Source Sans Pro, sans-serif',
+                          fontWeight: 600,
+                        },
+                      }}
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Typography
+                      variant="p"
+                      sx={{
+                        textAlign: 'left',
+                        fontFamily: 'Source, Sans Pro, sans-serif',
+                        zIndex: 10,
+                        color: 'white',
+                        fontWeight: 600,
+                        letterSpacing: 3,
+                        outline: 'none',
+                      }}
+                    >
+                      MESSAGE
+                    </Typography>
+                    <TextField
+                      className="textfield"
+                      multiline={true}
+                      minRows={10}
+                      variant="outlined"
+                      type="text"
+                      fullWidth
+                      sx={{
+                        backgroundColor: 'rgb(18, 26, 50)',
+                        letterSpacing: 3,
+                        mt: 2,
+                      }}
+                      InputProps={{
+                        className: styles.multilineColor,
+                      }}
+                    />
+                  </Grid>
+                  <Grid xs={8}>
+                    <Box sx={{ display: 'flex', padding: 3 }}>
+                      <Button
+                        variant="contained"
+                        sx={{
+                          bgcolor: 'white',
+                          color: 'rgb(8, 16, 40)',
+                          fontFamily: 'Source, Sans Pro, sans-serif',
+                          fontWeight: 400,
+                          zIndex: 10,
+                          paddingY: 2,
+                          letterSpacing: 3,
+                          mr: 3,
+                        }}
+                      >
+                        SEND MESSAGE
+                      </Button>
+                      <Button
+                        variant="outlined"
+                        sx={{
+                          bgcolor: 'rgb(8, 16, 40)',
+                          color: 'white',
+                          fontFamily: 'Source, Sans Pro, sans-serif',
+                          zIndex: 10,
+                          fontWeight: 400,
+                          border: '1px solid white',
+                          letterSpacing: 3,
+                          px: 3,
+                          py: 2,
+                        }}
+                      >
+                        CLEAR
+                      </Button>
+                    </Box>
+                  </Grid>
+                </Grid>
+              </form>
+            </Box>
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            md={5}
+            sx={{
+              border: '0.5px solid gray',
+              pt: 5,
+            }}
+          >
+            {contactDetails &&
+              contactDetails.map((contact, i) => {
+                return (
+                  <Box
+                    key={contact.title}
+                    sx={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      mr: 5,
+                      paddingX: 5,
+                      paddingBottom: 10,
+                      borderBottom: '0.5px solid gray',
+                      marginBottom: 5,
+                    }}
+                  >
+                    <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+                      <Box
+                        sx={{
+                          borderRadius: 100,
+                          bgcolor: 'white',
+                          zIndex: 10,
+                          height: 50,
+                          width: 50,
+                          mr: 3,
+                        }}
+                      >
+                        {contact.icon}
+                      </Box>
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          flexDirection: 'column',
+                        }}
+                      >
+                        <Typography
+                          variant="h4"
+                          sx={{
+                            fontFamily: 'Source, Sans Pro, sans-serif',
+                            fontWeight: 600,
+                            color: 'white',
+                            letterSpacing: 3,
+                            fontSize: '1.5rem',
+                          }}
+                        >
+                          {contact.title}
+                        </Typography>
+                        <Typography
+                          variant="body"
+                          sx={{
+                            fontFamily: 'Source, Sans Pro, sans-serif',
+                            fontWeight: 300,
+                            color: 'white',
+                            textDecoration: i === 0 ? 'underline' : null,
+                            lineHeight: 2.5,
+                            textDecorationStyle: i === 0 ? 'dotted' : null,
+                          }}
+                        >
+                          {contact.value}
+                        </Typography>
+                      </Box>
+                    </Box>
+                  </Box>
+                );
+              })}
+          </Grid>
+        </Grid>
+      </Container>
+    </Box>
+  );
+};
+
+export default Content3;
