@@ -1,6 +1,5 @@
 import { Container, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
-import { fontSize } from '@mui/system';
 import socialIcons from '../../../utils/socialIcons';
 
 const Footer = () => {
