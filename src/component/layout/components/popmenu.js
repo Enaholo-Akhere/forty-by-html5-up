@@ -2,15 +2,18 @@ import { Button, Typography } from '@mui/material';
 import Divider from '@mui/material/Divider';
 import Box from '@mui/material/Box';
 import CloseIcon from '@mui/icons-material/Close';
-// import { useState } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+import { useEffect } from 'react';
 
 function Popmenu({ showBar, popBar }) {
-  // const [show, setShows] = useState(false);
-  console.log('line-25', popBar);
+  useEffect(() => {
+    AOS.init();
+  }, []);
   const handleShowBar = () => {
     showBar(false);
   };
-  console.log('got to pop bar:', popBar);
+
   const navs = ['HOME', 'LANDING', 'GENERIC', 'ELEMENT'];
   return (
     <Box
@@ -19,10 +22,14 @@ function Popmenu({ showBar, popBar }) {
         width: '100vw',
         height: '100vh',
         position: 'fixed',
+        marginTop: 13,
         zIndex: 100,
-        right: !popBar ? '150vw' : null,
+        right: !popBar ? '180vw' : null,
         transition: '0.3s ease-in-out',
       }}
+      data-aos={!popBar ? 'fade-zoom-out' : null}
+      data-aos-easing="ease-in-sine"
+      data-aos-duration="600"
     >
       <Box
         sx={{
@@ -51,11 +58,14 @@ function Popmenu({ showBar, popBar }) {
           position: 'fixed',
           alignContent: 'center',
           zIndex: 20,
-          left: !popBar ? '150vw' : '50%',
+          left: !popBar ? '-200vw' : '50%',
           transition: '0.3s ease-in-out',
           top: '50%',
           transform: 'translate(-50%, -50%)',
         }}
+        data-aos={!popBar ? 'fade-down' : null}
+        data-aos-easing="linear"
+        data-aos-duration="1500"
       >
         {navs.map((nav) => {
           return (

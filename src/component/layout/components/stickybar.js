@@ -16,13 +16,17 @@ const StickyBar = () => {
         display: 'flex',
         py: 1,
         backgroundColor: 'white',
+        position: 'fixed',
+        zIndex: 20,
+        width: '100%',
+        top: 0,
       }}
     >
-      <Box sx={{ flexGrow: 1, display: 'flex', paddingX: 1 }}>
+      <Box sx={{ flexGrow: 1, display: 'flex', paddingLeft: 1 }}>
         <Box
           sx={{
             justifyContent: 'center',
-            alignContent: 'cemter',
+            alignContent: 'center',
             display: { xs: 'none', sm: 'flex' },
           }}
         >
@@ -220,7 +224,7 @@ const StickyBar = () => {
                 mr: 1,
                 fontSize: '0.8em',
                 fontFamily: 'Source Sans Pro, sans-serif',
-                zIndex: 10
+                zIndex: 10,
               }}
             >
               Download

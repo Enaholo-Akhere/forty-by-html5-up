@@ -5,6 +5,7 @@ import TextField from '@mui/material/TextField';
 import { Button, Container } from '@mui/material';
 import contactDetails from '../../utils/contactDetails';
 import { styled } from '@mui/material/styles';
+import Divider from '@mui/material/Divider';
 
 const Content3 = () => {
   const styles = (theme) =>
@@ -17,7 +18,11 @@ const Content3 = () => {
   return (
     <Box
       Container
-      sx={{ backgroundColor: 'rgb(8, 16, 40)', border: '0.5px solid gray' }}
+      sx={{
+        backgroundColor: 'rgb(8, 16, 40)',
+        border: '0.5px solid gray',
+        overflow: 'hidden',
+      }}
     >
       <Container sx={{ backgroundColor: 'ineherit' }}>
         <Grid container spacing={3} pt={3}>
@@ -30,7 +35,7 @@ const Content3 = () => {
                       variant="p"
                       sx={{
                         textAlign: 'left',
-                        fontFamily: 'Source, Sans Pro, sans-serif',
+                        fontFamily: 'Source Sans Pro, sans-serif',
                         zIndex: 10,
                         color: 'white',
                         letterSpacing: 3,
@@ -159,7 +164,7 @@ const Content3 = () => {
             xs={12}
             md={5}
             sx={{
-              border: '0.5px solid gray',
+              borderLeft: '0.5px solid gray',
               pt: 5,
             }}
           >
@@ -172,10 +177,8 @@ const Content3 = () => {
                       display: 'flex',
                       flexDirection: 'column',
                       mr: 5,
-                      paddingX: 5,
+                      paddingLeft: 5,
                       paddingBottom: 10,
-                      borderBottom: '0.5px solid gray',
-                      marginBottom: 5,
                     }}
                   >
                     <Box sx={{ display: 'flex', flexDirection: 'row' }}>
@@ -223,6 +226,27 @@ const Content3 = () => {
                           {contact.value}
                         </Typography>
                       </Box>
+                    </Box>
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignContent: 'center',
+                        width: '100%',
+                        marginTop: 10,
+                        paddingLeft: 10,
+                      }}
+                    >
+                      <Divider
+                        variant="fullWidth"
+                        light
+                        sx={{
+                          color: 'white',
+                          width: 678,
+                          border: '0.5px solid gray',
+                          zIndex: 10,
+                        }}
+                      />
                     </Box>
                   </Box>
                 );

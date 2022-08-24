@@ -21,17 +21,20 @@ function HideOnScroll(props) {
 
 const NavAppBar = (props) => {
   const [show, setShow] = useState(false);
-  console.log('appbar:', show);
-  const showState = () => {
-    console.log('setsHOE GOT HERE:', show);
-    setShow(true);
-  };
 
   return (
     <React.Fragment>
       <Popmenu showBar={setShow} popBar={show} />
       <HideOnScroll {...props}>
-        <Box position="sticky" sx={{ zIndex: 6, paddingX: 2, marginTop: 3 }}>
+        <Box
+          sx={{
+            zIndex: 6,
+            position: 'fixed',
+            top: 80,
+            width: '100%',
+            margin: 'auto',
+          }}
+        >
           <Box display={'flex'}>
             <Box
               variant="h6"
@@ -39,6 +42,7 @@ const NavAppBar = (props) => {
               sx={{
                 flexGrow: 1,
                 display: 'flex',
+                paddingLeft: 3,
               }}
             >
               <Typography
@@ -79,9 +83,13 @@ const NavAppBar = (props) => {
               </Typography>
             </Box>
 
-            <Box variant="h6" component="div" sx={{ display: 'flex' }}>
+            <Box
+              variant="h6"
+              component="div"
+              sx={{ display: 'flex', paddingRight: 3 }}
+            >
               <Typography
-                onClick={showState}
+                onClick={() => setShow(true)}
                 paddingX={0.5}
                 sx={{
                   cursor: 'pointer',
@@ -102,7 +110,7 @@ const NavAppBar = (props) => {
                   fontFamily: 'Source Sans Pro, sans-serif',
                 }}
               >
-                <MenuIcon onClick={showState} />
+                <MenuIcon onClick={() => setShow(true)} />
               </Typography>
             </Box>
           </Box>

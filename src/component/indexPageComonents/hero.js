@@ -135,7 +135,7 @@ const Hero = () => {
                   textAlign: 'left',
                   lineHeight: 1.5,
                   fontSize: { xs: '0.8rem', md: '1rem' },
-                  fontWeighnt: 600,
+                  fontWeighnt: 700,
                   letterSpacing: { xs: 1, md: 3 },
                   zIndex: 10,
                   color: 'white'
@@ -150,7 +150,7 @@ const Hero = () => {
                 color: 'white',
                 zIndex: 10,
                 fontFamily: 'Source Sans Pro, sans-serif',
-                fontWeighnt: 600,
+                fontWeighnt: 900,
                 marginY: 3,
                 width: 200,
               }}
@@ -164,7 +164,7 @@ const Hero = () => {
                   height: 'fit-content',
                   padding: 2,
                   fontFamily: 'Source Sans Pro, sans-serif',
-                  fontWeighnt: 600,
+                  fontWeighnt: 900,
                   letterSpacing: 3,
                 }}
                 endIcon={<ArrowRightAltIcon />}

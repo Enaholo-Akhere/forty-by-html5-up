@@ -6,8 +6,12 @@ import StickyBar from './components/stickybar';
 function Layout({ children }) {
   return (
     <Box>
-      <StickyBar />
-      <NavAppBar />
+      <Box>
+        <StickyBar />
+      </Box>
+      <Box>
+        <NavAppBar />
+      </Box>
       {children}
       <Footer />
     </Box>
