@@ -2,7 +2,7 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
-import content1Contents from '../../utils/cardDetails';
+import content1Contents from '../../utils/cardDetails';     
 
 const Content1 = () => {
   const arrOfNums = [1, 3, 4, 8, 25, 32];

@@ -71,6 +71,7 @@ const Hero = () => {
             sx={{
               display: 'flex',
               justifyContent: 'flex-start',
+              mt: { xs: 20, lg: 5, xl: 'none' },
             }}
           >
             <Typography
@@ -138,7 +139,7 @@ const Hero = () => {
                   fontWeighnt: 700,
                   letterSpacing: { xs: 1, md: 3 },
                   zIndex: 10,
-                  color: 'white'
+                  color: 'white',
                 }}
               >
                 A RESPONSIVE SITE TEMPLATE DESIGNED BY HTML5 UP AND RELEASED

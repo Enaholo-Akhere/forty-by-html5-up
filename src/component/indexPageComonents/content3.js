@@ -4,17 +4,10 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import { Button, Container } from '@mui/material';
 import contactDetails from '../../utils/contactDetails';
-import { styled } from '@mui/material/styles';
+//import { styled } from '@mui/material/styles';
 import Divider from '@mui/material/Divider';
 
 const Content3 = () => {
-  const styles = (theme) =>
-    styled({
-      multilineColor: {
-        color: 'red',
-      },
-    });
-
   return (
     <Box
       Container
@@ -26,7 +19,7 @@ const Content3 = () => {
     >
       <Container sx={{ backgroundColor: 'ineherit' }}>
         <Grid container spacing={3} pt={3}>
-          <Grid item xs={12} md={7} paddingX={5} pt={5}>
+          <Grid item xs={12} md={7} paddingX={5} pt={5} mb={10}>
             <Box sx={{ width: '100%' }}>
               <form>
                 <Grid container spacing={3}>
@@ -96,6 +89,7 @@ const Content3 = () => {
                         fontFamily: 'Source, Sans Pro, sans-serif',
                         zIndex: 10,
                         color: 'white',
+                        fontFamily: 'Source, Sans Pro, sans-serif',
                         fontWeight: 600,
                         letterSpacing: 3,
                         outline: 'none',
@@ -113,16 +107,23 @@ const Content3 = () => {
                       sx={{
                         backgroundColor: 'rgb(18, 26, 50)',
                         letterSpacing: 3,
+                        color: 'white',
                         mt: 2,
                       }}
-                      InputProps={{
-                        className: styles.multilineColor,
+                      inputProps={{
+                        style: {
+                          color: 'white',
+                          zIndex: 10,
+                          fontFamily: 'Source, Sans Pro, sans-serif',
+                          fontWeight: 400,
+                        },
                       }}
                     />
                   </Grid>
-                  <Grid xs={8}>
-                    <Box sx={{ display: 'flex', padding: 3 }}>
+                  <Grid xs={12}>
+                    <Box sx={{ display: 'flex', padding: 3, width: '100%' }}>
                       <Button
+                        fullWidth={false}
                         variant="contained"
                         sx={{
                           bgcolor: 'white',
@@ -130,7 +131,7 @@ const Content3 = () => {
                           fontFamily: 'Source, Sans Pro, sans-serif',
                           fontWeight: 400,
                           zIndex: 10,
-                          paddingY: 2,
+                          paddingY: { xs: 1, md: 2 },
                           letterSpacing: 3,
                           mr: 3,
                         }}
@@ -139,6 +140,7 @@ const Content3 = () => {
                       </Button>
                       <Button
                         variant="outlined"
+                        fullWidth={false}
                         sx={{
                           bgcolor: 'rgb(8, 16, 40)',
                           color: 'white',
@@ -148,7 +150,7 @@ const Content3 = () => {
                           border: '1px solid white',
                           letterSpacing: 3,
                           px: 3,
-                          py: 2,
+                          py: { xs: 1, md: 2 },
                         }}
                       >
                         CLEAR
@@ -229,7 +231,7 @@ const Content3 = () => {
                     </Box>
                     <Box
                       sx={{
-                        display: 'flex',
+                        display: i === 2 ? 'none' : 'flex',
                         justifyContent: 'center',
                         alignContent: 'center',
                         width: '100%',
@@ -242,9 +244,9 @@ const Content3 = () => {
                         light
                         sx={{
                           color: 'white',
-                          width: 678,
+                          width: '176%',
                           border: '0.5px solid gray',
-                          zIndex: 10,
+                          zIndex: 1,
                         }}
                       />
                     </Box>
