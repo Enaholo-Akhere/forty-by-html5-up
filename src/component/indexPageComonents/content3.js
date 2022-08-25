@@ -4,7 +4,6 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import { Button, Container } from '@mui/material';
 import contactDetails from '../../utils/contactDetails';
-//import { styled } from '@mui/material/styles';
 import Divider from '@mui/material/Divider';
 
 const Content3 = () => {
@@ -89,7 +88,6 @@ const Content3 = () => {
                         fontFamily: 'Source, Sans Pro, sans-serif',
                         zIndex: 10,
                         color: 'white',
-                        fontFamily: 'Source, Sans Pro, sans-serif',
                         fontWeight: 600,
                         letterSpacing: 3,
                         outline: 'none',
