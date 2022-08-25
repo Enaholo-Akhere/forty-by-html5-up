@@ -30,7 +30,7 @@ const NavAppBar = (props) => {
           sx={{
             zIndex: 6,
             position: 'fixed',
-            top: 80,
+            top: 70,
             width: '100%',
             margin: 'auto',
           }}

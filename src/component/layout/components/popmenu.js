@@ -27,7 +27,7 @@ function Popmenu({ showBar, popBar }) {
         right: !popBar ? '180vw' : null,
         transition: '0.3s ease-in-out',
       }}
-      data-aos={!popBar ? 'fade-zoom-out' : null}
+      data-aos={!popBar ? 'fade-zoom-out' : ''}
       data-aos-easing="ease-in-sine"
       data-aos-duration="600"
     >
@@ -58,14 +58,11 @@ function Popmenu({ showBar, popBar }) {
           position: 'fixed',
           alignContent: 'center',
           zIndex: 20,
-          left: !popBar ? '-200vw' : '50%',
+          left: '50%',
           transition: '0.3s ease-in-out',
           top: '50%',
           transform: 'translate(-50%, -50%)',
         }}
-        data-aos={!popBar ? 'fade-down' : null}
-        data-aos-easing="linear"
-        data-aos-duration="1500"
       >
         {navs.map((nav) => {
           return (
@@ -89,10 +86,12 @@ function Popmenu({ showBar, popBar }) {
                   '&:hover': {
                     color: 'primary.main',
                     cursor: 'pointer',
-                    transition: '0.3 ease-in-out',
                   },
                   letterSpacing: 3,
                 }}
+                data-aos="fade-zoom-out"
+                data-aos-easing="ease-in-sine"
+                data-aos-duration="300"
               >
                 {nav}
               </Typography>
