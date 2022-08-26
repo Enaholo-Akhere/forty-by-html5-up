@@ -18,6 +18,9 @@ function Popmenu({ showBar, popBar }) {
   return (
     <Box
       backgroundColor="rgba(0, 6, 20, 0.9)"
+      data-aos={!popBar ? 'fade-zoom-out' : null}
+      data-aos-easing="ease-in-sine"
+      data-aos-duration="600"
       sx={{
         width: '100vw',
         height: '100vh',
@@ -27,16 +30,14 @@ function Popmenu({ showBar, popBar }) {
         right: !popBar ? '180vw' : null,
         transition: '0.3s ease-in-out',
       }}
-      data-aos={!popBar ? 'fade-zoom-out' : ''}
-      data-aos-easing="ease-in-sine"
-      data-aos-duration="600"
     >
       <Box
         sx={{
           display: 'flex',
           justifyContent: 'flex-end',
           zIndex: 25,
-          padding: 3,
+          paddingX: 4,
+          paddingY: 1,
         }}
       >
         <CloseIcon
@@ -89,9 +90,6 @@ function Popmenu({ showBar, popBar }) {
                   },
                   letterSpacing: 3,
                 }}
-                data-aos="fade-zoom-out"
-                data-aos-easing="ease-in-sine"
-                data-aos-duration="300"
               >
                 {nav}
               </Typography>

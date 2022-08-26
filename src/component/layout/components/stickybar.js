@@ -50,7 +50,7 @@ const StickyBar = () => {
             border: { xs: 'none', lg: '1px solid lightgrey' },
             borderRadius: 2,
             justifyContent: 'center',
-            alignContent: 'cemter',
+            alignContent: 'center',
           }}
         >
           {leftStickyNav.map((nav, i) => {
