@@ -1,5 +1,5 @@
-import IndexPage from './pages/index';
-function App() {
+import IndexPage from './pages/landingpage';
+const App = () => {
   return (
     <div className="App">
       <IndexPage />

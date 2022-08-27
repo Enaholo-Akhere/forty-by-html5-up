@@ -5,13 +5,14 @@ import { useTheme } from '@mui/material/styles';
 import Divider from '@mui/material/Divider';
 import Button from '@mui/material/Button';
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Hero = () => {
   const theme = useTheme();
   const styles = (bgImage) => ({
     position: 'absolute',
     objectFit: 'cover',
-    /* support for plugin https://github.com/bfred-it/object-fit-images */
     fontFamily: 'object-fit: cover;',
     top: 0,
     left: 0,
@@ -24,6 +25,12 @@ const Hero = () => {
     backgroundImage: `url(${bgImage})`,
     filter: theme.palette.mode === 'dark' ? 'brightness(0.7)' : 'none',
   });
+
+  //initializing AOS
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   useEffect(() => {
     const jarallaxInit = async () => {
       const jarallaxElems = document.querySelectorAll('.jarallax');
@@ -66,7 +73,11 @@ const Hero = () => {
             top: 0,
           }}
         />
-        <Container>
+        <Container
+          data-aos="zoom-out-right"
+          data-aos-easing="ease-in-sine"
+          data-aos-duration="700"
+        >
           <Box
             sx={{
               display: 'flex',

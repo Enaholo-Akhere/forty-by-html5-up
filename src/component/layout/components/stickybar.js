@@ -3,6 +3,7 @@ import Typography from '@mui/material/Typography';
 import IosShareIcon from '@mui/icons-material/IosShare';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import { Button } from '@mui/material';
 
 const StickyBar = () => {
   const leftStickyNav = ['Desktop', 'Tablet', 'Tablet(Portrait)', 'Mobile'];
@@ -39,6 +40,7 @@ const StickyBar = () => {
               padding: 1,
               pr: 3,
               fontFamily: 'Source Sans Pro, sans-serif',
+              cursor: 'pointer',
             }}
           >
             Forty
@@ -55,7 +57,10 @@ const StickyBar = () => {
         >
           {leftStickyNav.map((nav, i) => {
             return (
-              <Typography
+              <Button
+                variant="text"
+                component="a"
+                href="#"
                 fontSize={'0.9rem'}
                 key={nav}
                 sx={{
@@ -64,12 +69,18 @@ const StickyBar = () => {
                   fontWeight: '600',
                   paddingX: 2,
                   paddingY: 1,
-                  backgroundColor: i === 0 ? 'rgba(0,0,0, 0.7)' : null,
-                  color: i === 0 ? 'white' : null,
+                  transition: '0.3s ease-in-out',
+                  backgroundColor: i === 0 ? 'rgba(8, 16, 40, 0.7)' : null,
+                  '&:hover': {
+                    backgroundColor:
+                      i === 0 ? 'rgba(8, 16, 40, 0.6)' : '#eeeeee',
+                    transition: '0.3s ease-in-out',
+                  },
+                  color: i === 0 ? 'white' : 'rgb(8, 16, 40)',
                 }}
               >
                 {nav}
-              </Typography>
+              </Button>
             );
           })}
         </Box>
@@ -81,7 +92,12 @@ const StickyBar = () => {
             ml: 1,
             border: '1px solid lightgrey',
             borderRadius: 2,
-            display: { xs: 'none', md: 'flex' },
+            display: { xs: 'none', md: 'flex', cursor: 'pointer' },
+            transition: '0.3s ease-in-out',
+            '&:hover': {
+              backgroundColor: '#eeeeee',
+              transition: '0.3s ease-in-out',
+            },
           }}
         >
           <IosShareIcon />
@@ -101,6 +117,7 @@ const StickyBar = () => {
                 fontSize: '0.8em',
                 fontWeight: 600,
                 fontFamily: 'Source Sans Pro, sans-serif',
+                cursor: 'pointer',
               }}
             >
               Back
@@ -129,7 +146,7 @@ const StickyBar = () => {
                   py: 1,
                   display: { xs: 'none', sm: 'flex' },
                   justifyContent: 'center',
-                  alignContent: 'cemter',
+                  alignContent: 'center',
                 }}
               >
                 <Box
@@ -140,6 +157,7 @@ const StickyBar = () => {
                     display: 'flex',
                     justifyContent: 'center',
                     alignContent: 'center',
+                    cursor: 'pointer',
                   }}
                 >
                   <Typography
@@ -199,6 +217,7 @@ const StickyBar = () => {
                 fontSize: '0.8em',
                 fontWeight: 600,
                 fontFamily: 'Source Sans Pro, sans-serif',
+                cursor: 'pointer',
               }}
             >
               Back
@@ -216,6 +235,7 @@ const StickyBar = () => {
               borderRadius: 2,
               backgroundColor: '#E7746F',
               color: 'white',
+              cursor: 'pointer',
             }}
           >
             <Typography

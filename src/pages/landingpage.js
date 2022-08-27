@@ -1,10 +1,10 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import Layout from '../component/layout/layout';
-import Hero from '../component/indexPageComonents/hero';
-import Content1 from '../component/indexPageComonents/content1';
-import Content2 from '../component/indexPageComonents/content2';
-import Content3 from '../component/indexPageComonents/content3';
+import Hero from '../component/indexPageComponents/hero';
+import Content1 from '../component/indexPageComponents/content1';
+import Content2 from '../component/indexPageComponents/content2';
+import Content3 from '../component/indexPageComponents/content3';
 
 const HeroPage = () => {
   return (

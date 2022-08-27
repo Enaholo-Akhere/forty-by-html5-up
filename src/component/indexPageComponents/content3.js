@@ -16,7 +16,7 @@ const Content3 = () => {
         overflow: 'hidden',
       }}
     >
-      <Container sx={{ backgroundColor: 'ineherit' }}>
+      <Container sx={{ backgroundColor: 'inherit' }}>
         <Grid container spacing={3} pt={3}>
           <Grid item xs={12} md={7} paddingX={5} pt={5} mb={10}>
             <Box sx={{ width: '100%' }}>
