@@ -22,7 +22,7 @@ const Footer = () => {
           sx={{
             display: 'flex',
             flexDirection: 'row',
-            justifyContent: { xs: 'center', md: 'flex-start' },
+            justifyContent: 'flex-start',
           }}
         >
           {socialIcons.map((icons) => {
@@ -32,9 +32,9 @@ const Footer = () => {
         <Box
           sx={{
             display: 'flex',
-            flexDirection: 'row',
+            flexDirection: { xs: 'column', md: 'row' },
             paddingY: 4,
-            justifyContent: { xs: 'center', md: 'flex-start' },
+            justifyContent: 'flex-start',
             margin: 'center',
           }}
         >
@@ -47,6 +47,7 @@ const Footer = () => {
               zIndex: 10,
               paddingRight: 2,
               fontSize: 14,
+              paddingY: 0.5,
             }}
           >
             &copy; Untitled
@@ -56,11 +57,12 @@ const Footer = () => {
               color: 'rgb(120, 120, 120)',
               fontFamily: 'Source Sans Pro, sans-serif',
               fontWeight: 400,
-              borderLeft: '0.5px solid rgb(120, 120, 120)',
+              borderLeft: { xs: 'none', md: '0.5px solid rgb(120, 120, 120)' },
               marginRight: 1,
               zIndex: 10,
               fontSize: 14,
-              paddingX: 3,
+              paddingX: { xs: 'none', md: 3 },
+              paddingY: 0.5,
             }}
           >
             Design: HTML5 UP
@@ -69,12 +71,13 @@ const Footer = () => {
             sx={{
               fontFamily: 'Source Sans Pro, sans-serif',
               fontWeight: 400,
-              borderLeft: '0.5px solid rgb(120, 120, 120)',
+              borderLeft: { xs: 'none', md: '0.5px solid rgb(120, 120, 120)' },
               marginRight: 1,
               color: 'rgb(120, 120, 120)',
               zIndex: 10,
               fontSize: 14,
-              paddingX: 3,
+              paddingX: { xs: 'none', md: 3 },
+              paddingY: 0.5,
             }}
           >
             Demo Images: Unsplash

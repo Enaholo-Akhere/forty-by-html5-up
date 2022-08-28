@@ -15,7 +15,8 @@ const Content1 = () => {
               <Grid
                 item
                 md={arrOfNums[i] % (i + 1) === 0 ? 5 : 7}
-                xs={arrOfNums[i] % (i + 1) === 0 ? 6 : 6}
+                sm={arrOfNums[i] % (i + 1) === 0 ? 6 : 6}
+                xs={arrOfNums[i] % (i + 1) === 0 ? 12 : 12}
                 component={'a'}
                 href="#"
                 key={content.header}
