@@ -2,9 +2,16 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
-import content1Contents from '../../utils/cardDetails';     
+import content1Contents from '../../utils/cardDetails';
+import BlockIcon from '@mui/icons-material/Block';
+import { useState } from 'react';
 
 const Content1 = () => {
+  const [loginWarning, setLoginWarning] = useState(null);
+  const handleShowWarning = (id) => {
+    setLoginWarning(id);
+  };
+
   const arrOfNums = [1, 3, 4, 8, 25, 32];
   return (
     <Box>
@@ -18,20 +25,22 @@ const Content1 = () => {
                 sm={arrOfNums[i] % (i + 1) === 0 ? 6 : 6}
                 xs={arrOfNums[i] % (i + 1) === 0 ? 12 : 12}
                 component={'a'}
-                href="#"
+                href='#'
                 key={content.header}
+                onMouseEnter={() => handleShowWarning(i)}
+                onMouseLeave={() => handleShowWarning(null)}
               >
                 <Box
                   width={'100%'}
                   height={'50vh'}
-                  position="relative"
-                  href="#"
+                  position='relative'
+                  href='#'
                 >
                   <Box
                     component={'img'}
                     src={content.img}
-                    width="100%"
-                    height="100%"
+                    width='100%'
+                    height='100%'
                   />
                   <Box
                     sx={{
@@ -49,13 +58,62 @@ const Content1 = () => {
                       },
                     }}
                   />
+                  {loginWarning === i && (
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        position: 'absolute',
+                        top: '50%',
+                        left: '50%',
+                        height: '60%',
+                        margin: 'auto',
+                        transform: 'translate(-50%, -50%)',
+                        zIndex: 10,
+                        minWidth: {
+                          xl: arrOfNums[i] % (i + 1) === 0 ? 500 : 680,
+                          lg: arrOfNums[i] % (i + 1) === 0 ? 500 : 680,
+                          md: arrOfNums[i] % (i + 1) === 0 ? 350 : 500,
+                          sm: 300,
+                          xs: 400,
+                        },
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          width: 1,
+                          justifyContent: 'center',
+                          flexDirection: 'column',
+                          alignItems: 'center',
+                          gap: 2,
+                          background: 'rgba(255, 255, 255, 0.3)',
+                          backdropFilter: 'blur(9px)',
+                        }}
+                      >
+                        <Box>
+                          <BlockIcon sx={{ fontSize: 50, color: 'white' }} />
+                        </Box>
+                        <Box>
+                          <Typography
+                            sx={{
+                              color: 'white',
+                              fontWeight: 800,
+                              fontFamily: 'Source Sans Pro, sans-serif',
+                            }}
+                          >
+                            You have to sign-in to view this Page
+                          </Typography>
+                        </Box>
+                      </Box>
+                    </Box>
+                  )}
                   <Box
                     sx={{
                       position: 'absolute',
                       top: '50%',
                       left: '0%',
                       transform: 'translate(-50%, -50%)',
-                      zIndex: 10,
+                      zIndex: 9,
                       marginLeft: { xs: 18, md: 20 },
                       minWidth: {
                         xl: 300,
@@ -68,7 +126,7 @@ const Content1 = () => {
                   >
                     <Box>
                       <Typography
-                        variant="h4"
+                        variant='h4'
                         sx={{
                           textAlign: 'left',
                           color: 'white',
@@ -93,7 +151,7 @@ const Content1 = () => {
                     >
                       <Divider
                         light
-                        variant="fullWidth"
+                        variant='fullWidth'
                         sx={{
                           color: 'white',
                           width: '100%',
@@ -104,7 +162,7 @@ const Content1 = () => {
                     </Box>
                     <Box>
                       <Typography
-                        variant="p"
+                        variant='p'
                         sx={{
                           textAlign: 'left',
                           color: 'white',

@@ -1,14 +1,32 @@
 import { Container, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useTheme } from '@mui/material/styles';
 import Divider from '@mui/material/Divider';
 import Button from '@mui/material/Button';
-import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import scrollIntoView from 'scroll-into-view-if-needed';
 
 const Hero = () => {
+  const [node, setNode] = useState(<div id=''></div>);
+
+  const handleScrollToView = () => {
+    const Projects = document.getElementById('Register');
+    console.log('projects', Projects);
+    setNode(Projects);
+  };
+
+  scrollIntoView(node, {
+    scrollMode: 'if-needed',
+    block: 'start',
+    inline: 'start',
+    behavior: 'smooth',
+  });
+
+  console.log('hero fro page', 'node', node);
+
   const theme = useTheme();
   const styles = (bgImage) => ({
     position: 'absolute',
@@ -45,22 +63,22 @@ const Hero = () => {
     jarallaxInit();
   });
   return (
-    <Box sx={{ marginTop: -6 }}>
+    <Box sx={{ marginTop: -6 }} id='enaholo'>
       <Box
         paddingY={2}
         className={'jarallax'}
         data-jarallax
-        data-speed="0.2"
+        data-speed='0.2'
         position={'relative'}
         minHeight={'70vh'}
         display={'flex'}
         alignItems={'center'}
-        id="agency__portfolio-item--js-scroll"
+        id='agency__portfolio-item--js-scroll'
       >
         <Box
           className={'jarallax-img'}
           sx={styles(
-            'https://images.pexels.com/photos/3042207/pexels-photo-3042207.jpeg?cs=srgb&dl=pexels-memo-candray-3042207.jpg&fm=jpg',
+            'https://images.pexels.com/photos/3042207/pexels-photo-3042207.jpeg?cs=srgb&dl=pexels-memo-candray-3042207.jpg&fm=jpg'
           )}
         />
         <Box
@@ -74,9 +92,9 @@ const Hero = () => {
           }}
         />
         <Container
-          data-aos="zoom-out-right"
-          data-aos-easing="ease-in-sine"
-          data-aos-duration="700"
+          data-aos='zoom-out-right'
+          data-aos-easing='ease-in-sine'
+          data-aos-duration='700'
         >
           <Box
             sx={{
@@ -86,7 +104,7 @@ const Hero = () => {
             }}
           >
             <Typography
-              variant="h2"
+              variant='h2'
               sx={{
                 textAlign: 'left',
                 color: 'white',
@@ -97,7 +115,7 @@ const Hero = () => {
                 fontSize: { xs: '1.8rem', md: '3.6rem' },
               }}
             >
-              Hi, my name is Forty
+              Hi, my name is Enaholo
             </Typography>
           </Box>
           <Box
@@ -109,7 +127,7 @@ const Hero = () => {
             }}
           >
             <Divider
-              variant="fullWidth"
+              variant='fullWidth'
               light
               sx={{
                 color: 'white',
@@ -141,7 +159,7 @@ const Hero = () => {
               }}
             >
               <Typography
-                variant="p"
+                variant='p'
                 sx={{
                   fontFamily: 'Source Sans Pro, sans-serif',
                   textAlign: 'left',
@@ -151,10 +169,12 @@ const Hero = () => {
                   letterSpacing: { xs: 1, md: 3 },
                   zIndex: 10,
                   color: 'white',
+                  textTransform: 'uppercase',
                 }}
               >
-                A RESPONSIVE SITE TEMPLATE DESIGNED BY HTML5 UP AND RELEASED
-                UNDER THE CREATIVE COMMONS.
+                and i build responsive user interfaces and secured backend
+                services using the necessary tools that is suitable for the
+                project.
               </Typography>
             </Box>
             <Box
@@ -168,7 +188,7 @@ const Hero = () => {
               }}
             >
               <Button
-                variant="outlined"
+                variant='outlined'
                 fullWidth
                 sx={{
                   color: 'white',
@@ -179,7 +199,9 @@ const Hero = () => {
                   fontWeighnt: 900,
                   letterSpacing: 3,
                 }}
-                endIcon={<ArrowRightAltIcon />}
+                endIcon={<ArrowDownwardIcon />}
+                onClick={handleScrollToView}
+                onMouseLeave={() => setNode(<div id=''></div>)}
               >
                 GET STARTED
               </Button>

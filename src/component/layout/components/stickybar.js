@@ -1,16 +1,44 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import IosShareIcon from '@mui/icons-material/IosShare';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
-import { Button } from '@mui/material';
+import Button from '@mui/material/Button';
+import CopyUrl from '../../../utils/copy-url';
+import { useState } from 'react';
+import scrollIntoView from 'scroll-into-view-if-needed';
+import SocialButtons from './social-buttons';
 
 const StickyBar = () => {
-  const leftStickyNav = ['Desktop', 'Tablet', 'Tablet(Portrait)', 'Mobile'];
-  const rightStickyNav = [
-    { icon: <ThumbUpIcon sx={{ fontSize: 14 }} />, title: 'Like' },
-    { icon: <TwitterIcon sx={{ fontSize: 14 }} />, title: 'Tweet' },
-  ];
+  const [bgColor, setBgColor] = useState('');
+  const [color, setColor] = useState('primary.main');
+  const [copied, setCopied] = useState(false);
+  const [onCurrent, setOnCurrent] = useState('Home');
+  const [node, setNode] = useState(<div id=''></div>);
+
+  const handleScrollToView = (id, nav) => {
+    const home = document.getElementById('Home');
+    const content1 = document.getElementById('Projects');
+    const content2 = document.getElementById('Core Competence');
+    const content3 = document.getElementById('Contact Me');
+    const idsArray = [
+      { name: home },
+      { name: content1 },
+      { name: content2 },
+      { name: content3 },
+    ];
+    const nodeElement = idsArray.filter((ea, i) => i === id)[0].name;
+
+    setNode(nodeElement);
+  };
+
+  scrollIntoView(node, {
+    scrollMode: 'if-needed',
+    block: 'start',
+    inline: 'start',
+    behavior: 'smooth',
+  });
+
+  const leftStickyNav = ['Home', 'Projects', 'Competence', 'Contact'];
+
   return (
     <Box
       sx={{
@@ -32,7 +60,7 @@ const StickyBar = () => {
           }}
         >
           <Typography
-            variant="h1"
+            variant='h1'
             sx={{
               fontWeight: '600',
               color: 'black',
@@ -43,7 +71,7 @@ const StickyBar = () => {
               cursor: 'pointer',
             }}
           >
-            Forty
+            Enas-Folio
           </Typography>
         </Box>
         <Box
@@ -58,9 +86,12 @@ const StickyBar = () => {
           {leftStickyNav.map((nav, i) => {
             return (
               <Button
-                variant="text"
-                component="a"
-                href="#"
+                onMouseLeave={() => setNode(<div id=''></div>)}
+                onClick={() => {
+                  handleScrollToView(i, nav);
+                  setOnCurrent(nav);
+                }}
+                component='a'
                 fontSize={'0.9rem'}
                 key={nav}
                 sx={{
@@ -70,13 +101,14 @@ const StickyBar = () => {
                   paddingX: 2,
                   paddingY: 1,
                   transition: '0.3s ease-in-out',
-                  backgroundColor: i === 0 ? 'rgba(8, 16, 40, 0.7)' : null,
+                  backgroundColor:
+                    nav === onCurrent ? 'rgba(8, 16, 40, 0.7)' : null,
                   '&:hover': {
                     backgroundColor:
-                      i === 0 ? 'rgba(8, 16, 40, 0.6)' : '#eeeeee',
+                      nav === onCurrent ? 'rgba(8, 16, 40, 0.6)' : '#eeeeee',
                     transition: '0.3s ease-in-out',
                   },
-                  color: i === 0 ? 'white' : 'rgb(8, 16, 40)',
+                  color: nav === onCurrent ? 'white' : 'rgb(8, 16, 40)',
                 }}
               >
                 {nav}
@@ -85,22 +117,35 @@ const StickyBar = () => {
           })}
         </Box>
         <Box
+          id='hero'
           sx={{
             paddingY: 1,
             paddingX: 1,
             fontSize: '1rem',
             ml: 1,
+            backgroundColor: bgColor,
             border: '1px solid lightgrey',
+
             borderRadius: 2,
-            display: { xs: 'none', md: 'flex', cursor: 'pointer' },
+            // display: { xs: 'none', md: 'flex', cursor: 'pointer' },
             transition: '0.3s ease-in-out',
             '&:hover': {
-              backgroundColor: '#eeeeee',
               transition: '0.3s ease-in-out',
             },
           }}
         >
-          <IosShareIcon />
+          <Button
+            startIcon={<IosShareIcon />}
+            sx={{ color, '&: disabled': { color: 'white' } }}
+            disabled={copied}
+          >
+            <CopyUrl
+              setColor={setColor}
+              copied={copied}
+              setCopied={setCopied}
+              setBgColor={setBgColor}
+            />
+          </Button>
         </Box>
         <Box sx={{ display: { xs: 'flex', sm: 'none' }, flexGrow: 1 }}>
           <Box
@@ -120,80 +165,13 @@ const StickyBar = () => {
                 cursor: 'pointer',
               }}
             >
-              Back
+              Docs
             </Typography>
           </Box>
         </Box>
       </Box>
       <Box sx={{ display: 'flex', paddingX: 1 }}>
-        <Box
-          sx={{
-            display: 'flex',
-            border: { xs: 'none', sm: '1px solid lightgrey' },
-            borderRadius: 2,
-            justifyContent: 'center',
-          }}
-        >
-          {rightStickyNav.map((icontitle, i) => {
-            return (
-              <Box
-                fontSize={'1rem'}
-                key={icontitle.title}
-                sx={{
-                  fontFamily: 'Source Sans Pro, sans-serif',
-                  fontWeight: '600',
-                  paddingX: 1,
-                  py: 1,
-                  display: { xs: 'none', sm: 'flex' },
-                  justifyContent: 'center',
-                  alignContent: 'center',
-                }}
-              >
-                <Box
-                  sx={{
-                    backgroundColor:
-                      icontitle.title === 'Like' ? '#4267B2' : '#1DA1F2',
-                    borderRadius: icontitle.title === 'Like' ? 1 : 3,
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignContent: 'center',
-                    cursor: 'pointer',
-                  }}
-                >
-                  <Typography
-                    sx={{
-                      color: 'white',
-                      fontSize: 12,
-                      pl: 1,
-                      pr: 1,
-                      py: 0.4,
-                      width: 'fit-content',
-                      textAlign: 'center',
-                      fontFamily: 'Source Sans Pro, sans-serif',
-                    }}
-                  >
-                    {icontitle.icon}
-                  </Typography>
-
-                  <Typography
-                    sx={{
-                      color: 'white',
-                      fontSize: 12,
-                      width: 'fit-content',
-                      py: 0.3,
-                      textAlign: 'center',
-                      pr: 1,
-                      fontWeight: 600,
-                      fontFamily: 'Source Sans Pro, sans-serif',
-                    }}
-                  >
-                    {icontitle.title}
-                  </Typography>
-                </Box>
-              </Box>
-            );
-          })}
-        </Box>
+        <SocialButtons display={'none'} />
         <Box
           sx={{
             display: 'flex',
@@ -204,30 +182,38 @@ const StickyBar = () => {
           <Box
             sx={{
               display: { xs: 'none', sm: 'flex' },
-              flexGrow: 1,
-              paddingY: 1,
-              paddingX: 3,
+              // flexGrow: 1,
+              // paddingY: 1,
+              // paddingX: 3,
               ml: 1,
               border: '1px solid lightgrey',
               borderRadius: 2,
+
+              px: '',
+              fontFamily: 'Source Sans Pro, sans-serif',
+              fontWeight: '600',
             }}
           >
-            <Typography
+            <Button
               sx={{
-                fontSize: '0.8em',
+                fontSize: '10',
                 fontWeight: 600,
                 fontFamily: 'Source Sans Pro, sans-serif',
                 cursor: 'pointer',
+                height: 1,
+                width: '100%',
+                color: 'rgb(8, 16, 40)',
+                bgcolor: '',
               }}
             >
-              Back
-            </Typography>
+              Docs
+            </Button>
           </Box>
 
           <Box
             sx={{
               display: 'flex',
-              paddingY: 1,
+              // paddingY: 1,
               paddingX: 3,
               fontSize: '1rem',
               ml: 1,
@@ -236,30 +222,22 @@ const StickyBar = () => {
               backgroundColor: '#E7746F',
               color: 'white',
               cursor: 'pointer',
+              alignItems: 'center',
             }}
           >
-            <Typography
+            <Button
               sx={{
                 fontWeight: 600,
                 mr: 1,
                 fontSize: '0.8em',
                 fontFamily: 'Source Sans Pro, sans-serif',
                 zIndex: 10,
+                textAlign: 'center',
+                color: 'white',
               }}
             >
-              Download
-            </Typography>
-            <Typography
-              sx={{
-                fontWeight: 600,
-                fontSize: '0.8em',
-                fontFamily: 'Source Sans Pro, sans-serif',
-                zIndex: 10,
-              }}
-            >
-              {' '}
-              (217,569)
-            </Typography>
+              Download Resume
+            </Button>
           </Box>
         </Box>
       </Box>

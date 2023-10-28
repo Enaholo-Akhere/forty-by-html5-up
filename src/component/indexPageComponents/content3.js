@@ -9,7 +9,6 @@ import Divider from '@mui/material/Divider';
 const Content3 = () => {
   return (
     <Box
-      Container
       sx={{
         backgroundColor: 'rgb(8, 16, 40)',
         border: '0.5px solid gray',
@@ -24,7 +23,7 @@ const Content3 = () => {
                 <Grid container spacing={3}>
                   <Grid item xs={12} md={6}>
                     <Typography
-                      variant="p"
+                      variant='p'
                       sx={{
                         textAlign: 'left',
                         fontFamily: 'Source Sans Pro, sans-serif',
@@ -37,11 +36,11 @@ const Content3 = () => {
                       NAME
                     </Typography>
                     <TextField
-                      variant="outlined"
-                      type="text"
+                      variant='outlined'
+                      type='text'
                       fullWidth
                       sx={{
-                        backgroundColor: 'rgb(18, 26, 50)',
+                        backgroundColor: 'rgb(11, 22, 53)',
                         mt: 2,
                         input: {
                           color: 'white',
@@ -53,7 +52,7 @@ const Content3 = () => {
                   </Grid>
                   <Grid item xs={12} md={6}>
                     <Typography
-                      variant="p"
+                      variant='p'
                       sx={{
                         textAlign: 'left',
                         fontFamily: 'Source, Sans Pro, sans-serif',
@@ -66,11 +65,11 @@ const Content3 = () => {
                       EMAIL
                     </Typography>
                     <TextField
-                      variant="outlined"
-                      type="text"
+                      variant='outlined'
+                      type='text'
                       fullWidth
                       sx={{
-                        backgroundColor: 'rgb(18, 26, 50)',
+                        backgroundColor: 'rgb(11, 22, 53)',
                         mt: 2,
                         input: {
                           color: 'white',
@@ -82,7 +81,7 @@ const Content3 = () => {
                   </Grid>
                   <Grid item xs={12}>
                     <Typography
-                      variant="p"
+                      variant='p'
                       sx={{
                         textAlign: 'left',
                         fontFamily: 'Source, Sans Pro, sans-serif',
@@ -96,14 +95,14 @@ const Content3 = () => {
                       MESSAGE
                     </Typography>
                     <TextField
-                      className="textfield"
+                      className='textfield'
                       multiline={true}
                       minRows={10}
-                      variant="outlined"
-                      type="text"
+                      variant='outlined'
+                      type='text'
                       fullWidth
                       sx={{
-                        backgroundColor: 'rgb(18, 26, 50)',
+                        backgroundColor: 'rgb(11, 22, 53)',
                         letterSpacing: 3,
                         color: 'white',
                         mt: 2,
@@ -118,11 +117,11 @@ const Content3 = () => {
                       }}
                     />
                   </Grid>
-                  <Grid xs={12}>
+                  <Grid item xs={12}>
                     <Box sx={{ display: 'flex', padding: 3, width: '100%' }}>
                       <Button
                         fullWidth={false}
-                        variant="contained"
+                        variant='contained'
                         sx={{
                           bgcolor: 'white',
                           color: 'rgb(8, 16, 40)',
@@ -137,7 +136,7 @@ const Content3 = () => {
                         SEND MESSAGE
                       </Button>
                       <Button
-                        variant="outlined"
+                        variant='outlined'
                         fullWidth={false}
                         sx={{
                           bgcolor: 'rgb(8, 16, 40)',
@@ -201,7 +200,7 @@ const Content3 = () => {
                         }}
                       >
                         <Typography
-                          variant="h4"
+                          variant='h4'
                           sx={{
                             fontFamily: 'Source, Sans Pro, sans-serif',
                             fontWeight: 600,
@@ -213,7 +212,7 @@ const Content3 = () => {
                           {contact.title}
                         </Typography>
                         <Typography
-                          variant="body"
+                          variant='body'
                           sx={{
                             fontFamily: 'Source, Sans Pro, sans-serif',
                             fontWeight: 300,
@@ -238,7 +237,7 @@ const Content3 = () => {
                       }}
                     >
                       <Divider
-                        variant="fullWidth"
+                        variant='fullWidth'
                         light
                         sx={{
                           color: 'white',
