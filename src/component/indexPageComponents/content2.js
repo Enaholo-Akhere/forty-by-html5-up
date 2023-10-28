@@ -14,7 +14,7 @@ const Content2 = () => {
           }}
         >
           <Typography
-            variant="h2"
+            variant='h2'
             sx={{
               textAlign: 'left',
               color: 'white',
@@ -25,7 +25,7 @@ const Content2 = () => {
               fontSize: { xs: '1.8rem', md: '3.6rem' },
             }}
           >
-            Massa libero
+            Core Competence
           </Typography>
         </Box>
         <Box
@@ -37,7 +37,7 @@ const Content2 = () => {
           }}
         >
           <Divider
-            variant="fullWidth"
+            variant='fullWidth'
             light
             sx={{
               color: 'white',
@@ -68,7 +68,7 @@ const Content2 = () => {
             }}
           >
             <Typography
-              variant="p"
+              variant='p'
               sx={{
                 fontFamily: 'Source Sans Pro, sans-serif',
                 textAlign: 'left',
@@ -78,13 +78,19 @@ const Content2 = () => {
                 fontWeight: 300,
               }}
             >
-              Nullam et orci eu lorem consequat tincidunt vivamus et sagittis
-              libero. Mauris aliquet magna magna sed nunc rhoncus pharetra.
-              Pellentesque condimentum sem. In efficitur ligula tate urna.
-              Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor.
-              Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis
-              libero. Mauris aliquet magna magna sed nunc rhoncus amet pharetra
-              et feugiat tempus.
+              I am a results-driven tech enthusiast with three years of hands-on
+              experience in the field. My core competencies lie in the realm of
+              web development, where I excel in JavaScript and TypeScript to
+              craft dynamic and scalable applications. I have a strong command
+              of Node.js for building robust server-side solutions and am
+              well-versed in managing data with both PostgreSQL and MongoDB. My
+              expertise extends to front-end development, where I leverage
+              Next.js and Material UI to create fast, SEO-friendly, and visually
+              appealing user interfaces. Beyond these core skills, I maintain a
+              passion for exploring new technologies and staying up-to-date with
+              industry trends. My commitment to problem-solving and teamwork
+              complements my technical capabilities, making me a valuable asset
+              for any project or team.
             </Typography>
           </Box>
           <Box
@@ -97,7 +103,7 @@ const Content2 = () => {
             }}
           >
             <Button
-              variant="outlined"
+              variant='outlined'
               fullWidth
               sx={{
                 color: 'white',

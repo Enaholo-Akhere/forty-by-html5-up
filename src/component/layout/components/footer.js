@@ -50,7 +50,7 @@ const Footer = () => {
               paddingY: 0.5,
             }}
           >
-            &copy; Untitled
+            &copy; E-Folio
           </Typography>
           <Typography
             sx={{
@@ -65,7 +65,7 @@ const Footer = () => {
               paddingY: 0.5,
             }}
           >
-            Design: HTML5 UP
+            Design: Enaholo Akhere
           </Typography>
           <Typography
             sx={{

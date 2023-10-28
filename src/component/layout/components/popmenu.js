@@ -1,31 +1,64 @@
 import { Button, Typography } from '@mui/material';
 import Divider from '@mui/material/Divider';
 import Box from '@mui/material/Box';
-import CloseIcon from '@mui/icons-material/Close';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import scrollIntoView from 'scroll-into-view-if-needed';
+import HamBurgerMenu from '../../../utils/hamburger-menu';
+import SocialButtons from './social-buttons';
 
 function Popmenu({ showBar, popBar }) {
+  const [node, setNode] = useState(<div id=''></div>);
+
+  const handleScrollToView = (nav, id) => {
+    const home = document.getElementById('Home');
+    const content1 = document.getElementById('Projects');
+    const content2 = document.getElementById('Core Competence');
+    const content3 = document.getElementById('Contact Me');
+    const idsArray = [
+      { name: home },
+      { name: content1 },
+      { name: content2 },
+      { name: content3 },
+    ];
+    const nodeElement = idsArray.filter((ea, i) => i === id)[0].name;
+
+    setNode(nodeElement);
+  };
+
+  const handleGetStarted = () => {
+    const Projects = document.getElementById('Register');
+    console.log('projects', Projects);
+    setNode(Projects);
+  };
+
+  scrollIntoView(node, {
+    scrollMode: 'if-needed',
+    block: 'start',
+    inline: 'start',
+    behavior: 'smooth',
+  });
+
+  const handleShow = () => {
+    showBar((prev) => !prev);
+  };
   useEffect(() => {
     AOS.init();
   }, []);
-  const handleShowBar = () => {
-    showBar(false);
-  };
 
-  const navs = ['HOME', 'LANDING', 'GENERIC', 'ELEMENT'];
+  const navs = ['HOME', 'PROJECTS', 'COMPETENCE', 'CONTACT'];
   return (
     <Box
-      backgroundColor="rgba(0, 6, 20, 0.9)"
+      backgroundColor='rgba(0, 6, 20, 0.9)'
       data-aos={!popBar ? 'fade-zoom-out' : null}
-      data-aos-easing="ease-in-sine"
-      data-aos-duration="600"
+      data-aos-easing='ease-in-sine'
+      data-aos-duration='600'
       sx={{
         width: '100vw',
         height: '100vh',
         position: 'fixed',
-        marginTop: 13,
+        marginTop: 15,
         zIndex: 100,
         right: !popBar ? '180vw' : null,
         transition: '0.3s ease-in-out',
@@ -40,15 +73,7 @@ function Popmenu({ showBar, popBar }) {
           paddingY: 1,
         }}
       >
-        <CloseIcon
-          onClick={handleShowBar}
-          sx={{
-            color: 'white',
-            zIndex: 25,
-            fontSize: '2rem',
-            '&:hover': { color: 'primary.main', cursor: 'pointer' },
-          }}
-        />
+        <HamBurgerMenu handleShow={handleShow} show={popBar} />
       </Box>
       <Box
         sx={{
@@ -65,16 +90,21 @@ function Popmenu({ showBar, popBar }) {
           transform: 'translate(-50%, -50%)',
         }}
       >
-        {navs.map((nav) => {
+        {navs.map((nav, i) => {
           return (
             <Box
+              onMouseLeave={() => setNode(<div id=''></div>)}
+              onClick={() => {
+                handleScrollToView(nav, i);
+                showBar((prev) => !prev);
+              }}
+              key={nav}
               sx={{
                 width: '100%',
                 margin: 'auto',
               }}
             >
               <Typography
-                key={nav}
                 sx={{
                   color: 'white',
                   fontFamily: 'Source San Pro, sans-serif',
@@ -102,7 +132,7 @@ function Popmenu({ showBar, popBar }) {
                 }}
               >
                 <Divider
-                  variant="fullWidth"
+                  variant='fullWidth'
                   light
                   sx={{
                     width: '100%',
@@ -125,7 +155,11 @@ function Popmenu({ showBar, popBar }) {
         >
           <Button
             fullWidth
-            variant="contained"
+            onMouseLeave={() => setNode(<div id=''></div>)}
+            onClick={() => {
+              handleGetStarted();
+              showBar((prev) => !prev);
+            }}
             sx={{
               fontFamily: 'Source San Pro, sans-serif',
               fontWeight: 600,
@@ -135,31 +169,12 @@ function Popmenu({ showBar, popBar }) {
               py: 2,
               letterSpacing: 3,
               my: 2,
+              '&: hover': { bgcolor: '#dddddd' },
             }}
           >
             GET STARTED
           </Button>
-          <Button
-            variant="outlined"
-            fullWidth
-            sx={{
-              fontFamily: 'Source San Pro, sans-serif',
-              fontWeight: 600,
-              bgcolor: 'rgb(8, 16, 40)',
-              color: 'white',
-              my: 2,
-              letterSpacing: 3,
-              lineSpacing: 2,
-              border: '2px solid white',
-              py: 2,
-              '&:hover': {
-                color: 'primary.main',
-                borderColor: 'primary.main',
-              },
-            }}
-          >
-            LOG IN
-          </Button>
+          <SocialButtons display={'block'} />
         </Box>
       </Box>
     </Box>

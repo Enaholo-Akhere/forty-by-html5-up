@@ -5,7 +5,7 @@ import HomeIcon from '@mui/icons-material/Home';
 const contactDetails = [
   {
     title: 'EMAIL',
-    value: 'information@untitled.tld',
+    value: 'enaholoa@gmail.com',
     icon: (
       <EmailIcon
         sx={{
@@ -19,7 +19,7 @@ const contactDetails = [
   },
   {
     title: 'PHONE',
-    value: '(000) 000-0000 x12387',
+    value: '+234 905 278 1743',
     icon: (
       <PhoneEnabledIcon
         sx={{
@@ -33,9 +33,8 @@ const contactDetails = [
   },
   {
     title: 'ADDRESS',
-    value: `1234 Somewhere Road #5432
-    Nashville, TN 00000
-    United States of America`,
+    value: `Lekki-Ajah, Lagos.
+    Nigeria`,
     icon: (
       <HomeIcon
         sx={{
