@@ -125,9 +125,7 @@ const StickyBar = () => {
             ml: 1,
             backgroundColor: bgColor,
             border: '1px solid lightgrey',
-
             borderRadius: 2,
-            // display: { xs: 'none', md: 'flex', cursor: 'pointer' },
             transition: '0.3s ease-in-out',
             '&:hover': {
               transition: '0.3s ease-in-out',
@@ -136,7 +134,7 @@ const StickyBar = () => {
         >
           <Button
             startIcon={<IosShareIcon />}
-            sx={{ color, '&: disabled': { color: 'white' } }}
+            sx={{ color, '&: disabled': { color: 'white' }, cursor: 'copy' }}
             disabled={copied}
           >
             <CopyUrl

@@ -58,11 +58,12 @@ const Content1 = () => {
                       },
                     }}
                   />
-                  {loginWarning === i && (
+                  {10 % i === 0 && loginWarning === i && (
                     <Box
                       sx={{
                         display: 'flex',
                         position: 'absolute',
+                        cursor: 'not-allowed',
                         top: '50%',
                         left: '50%',
                         height: '60%',

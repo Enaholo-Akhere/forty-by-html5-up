@@ -31,7 +31,7 @@ const NavAppBar = (props) => {
       <HideOnScroll {...props}>
         <Box
           sx={{
-            zIndex: 6,
+            zIndex: 11,
             position: 'fixed',
             top: 70,
             width: '100%',

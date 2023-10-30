@@ -14,9 +14,11 @@ import InputAdornment from '@mui/material/InputAdornment';
 import LockIcon from '@mui/icons-material/Lock';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { LOGIN_USER } from '../../api/user-api';
 
 const LoginForm = ({ setRegForm }) => {
   const [show, setShow] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const ref = useRef(null);
 
@@ -33,10 +35,17 @@ const LoginForm = ({ setRegForm }) => {
       .required('password is required'),
   });
 
-  const onSubmit = (value, { resetForm }) => {
+  const onSubmit = async (value, { resetForm }) => {
+    setLoading(true);
     delete value.confirmPassword;
-    console.log('values', value);
-    resetForm({ value: {} });
+    const { error, data } = await LOGIN_USER(value);
+    if (error) {
+      console.log('error from form', error?.response?.data?.error);
+      setLoading(false);
+    }
+    setLoading(false);
+    console.log('data', data);
+    // resetForm({ value: {} });
   };
 
   const formik = useFormik({
@@ -199,7 +208,7 @@ const LoginForm = ({ setRegForm }) => {
               </Typography>
             </Box>
             <LoadingButton
-              loading={''}
+              loading={loading}
               variant='contained'
               type='submit'
               color='primary'

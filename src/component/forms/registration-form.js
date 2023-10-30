@@ -13,9 +13,11 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import InputAdornment from '@mui/material/InputAdornment';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { REGISTER_USER } from '../../api/user-api';
 
 const RegistrationForm = ({ setRegForm }) => {
   const [show, setShow] = useState(false);
+  const [loading, setLoading] = useState(false);
   const ref = useRef(null);
 
   const initialValues = {
@@ -40,10 +42,17 @@ const RegistrationForm = ({ setRegForm }) => {
       .oneOf([yup.ref('password'), null], 'Passwords must match'),
   });
 
-  const onSubmit = (value, { resetForm }) => {
+  const onSubmit = async (value, { resetForm }) => {
+    setLoading(true);
     delete value.confirmPassword;
-    console.log('values', value);
-    resetForm({ value: {} });
+    const { error, data } = await REGISTER_USER(value);
+    if (error) {
+      console.log('error from form', error?.response?.data?.error);
+      setLoading(false);
+    }
+    setLoading(false);
+    console.log('data', data);
+    // resetForm({ value: {} });
   };
 
   const formik = useFormik({
@@ -239,7 +248,7 @@ const RegistrationForm = ({ setRegForm }) => {
               </Typography>
             </Box>
             <LoadingButton
-              loading={''}
+              loading={loading}
               variant='contained'
               type='submit'
               color='primary'
