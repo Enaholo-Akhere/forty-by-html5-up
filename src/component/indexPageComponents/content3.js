@@ -17,7 +17,12 @@ const Content3 = () => {
     >
       <Container sx={{ backgroundColor: 'inherit' }}>
         <Grid container spacing={3} pt={3}>
-          <Grid item xs={12} md={7} paddingX={5} pt={5} mb={10}>
+          <Grid
+            item
+            xs={12}
+            md={7}
+            sx={{ paddingX: { xs: 0, md: 5 }, mb: 10, pt: 5 }}
+          >
             <Box sx={{ width: '100%' }}>
               <form>
                 <Grid container spacing={3}>
@@ -118,7 +123,13 @@ const Content3 = () => {
                     />
                   </Grid>
                   <Grid item xs={12}>
-                    <Box sx={{ display: 'flex', padding: 3, width: '100%' }}>
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        padding: { xs: 0, md: 3 },
+                        width: '100%',
+                      }}
+                    >
                       <Button
                         fullWidth={false}
                         variant='contained'
