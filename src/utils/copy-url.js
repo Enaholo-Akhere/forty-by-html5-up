@@ -30,7 +30,7 @@ const CopyUrl = ({ setColor, copied, setCopied, setBgColor }) => {
           fontWeight: '600',
         }}
       >
-        {!copied ? 'Copy link' : 'Link Copied!'}
+        {!copied ? 'Copy Url' : 'Url Copied!'}
       </Typography>
     </Box>
   );

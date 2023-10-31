@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Box from '@mui/material/Box';
 import Layout from '../component/layout/layout';
 import Hero from '../component/indexPageComponents/hero';
@@ -10,12 +10,20 @@ import RegistrationForm from '../component/forms/registration-form';
 import LoginForm from '../component/forms/login-form';
 import TechStack from '../component/indexPageComponents/tech-stacks';
 import { api } from '../api/user-api';
+import { decryptData } from '../utils/enc-dec-user';
 
 const HeroPage = () => {
   const ref = useRef('');
   const [regForm, setRegForm] = useState('register');
 
   console.log('api', api);
+
+  const handleDecodedData = async (name) => {
+    const { data, message } = await decryptData(name);
+    console.log('user data:', data, 'and message:', message);
+  };
+
+  handleDecodedData('userData');
 
   return (
     <Layout>
