@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Box from '@mui/material/Box';
 import Layout from '../component/layout/layout';
 import Hero from '../component/indexPageComponents/hero';
