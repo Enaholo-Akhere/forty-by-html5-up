@@ -148,23 +148,25 @@ const StickyBar = () => {
         <Box sx={{ display: { xs: 'flex', sm: 'none' }, flexGrow: 1 }}>
           <Box
             sx={{
-              paddingY: 1,
-              paddingX: 3,
               ml: 1,
               border: '1px solid lightgrey',
               borderRadius: 2,
             }}
           >
-            <Typography
+            <Button
               sx={{
-                fontSize: '0.8em',
+                fontSize: '10',
                 fontWeight: 600,
                 fontFamily: 'Source Sans Pro, sans-serif',
                 cursor: 'pointer',
+                height: 1,
+                width: '100%',
+                color: 'rgb(8, 16, 40)',
+                bgcolor: '',
               }}
             >
               Docs
-            </Typography>
+            </Button>
           </Box>
         </Box>
       </Box>
@@ -234,7 +236,7 @@ const StickyBar = () => {
                 color: 'white',
               }}
             >
-              Download Resume
+              Résumé
             </Button>
           </Box>
         </Box>
