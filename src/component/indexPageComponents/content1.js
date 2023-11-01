@@ -6,10 +6,20 @@ import content1Contents from '../../utils/cardDetails';
 import BlockIcon from '@mui/icons-material/Block';
 import { useState } from 'react';
 
-const Content1 = () => {
+const Content1 = ({ userData }) => {
   const [loginWarning, setLoginWarning] = useState(null);
-  const handleShowWarning = (id) => {
-    setLoginWarning(id);
+  console.log('userdata', userData);
+
+  const handleClick = (id, url, urlClick) => {
+    console.log('url click', urlClick ? 'true' : 'false');
+    if (userData) {
+      setLoginWarning(null);
+      return window.open(url, '_blank');
+    } else if (!urlClick && !userData) {
+      setLoginWarning(id);
+    } else {
+      window.open(url, '_blank');
+    }
   };
 
   const arrOfNums = [1, 3, 4, 8, 25, 32];
@@ -18,29 +28,30 @@ const Content1 = () => {
       <Grid container spacing={0}>
         {content1Contents &&
           content1Contents.map((content, i) => {
+            const urlClick = arrOfNums[i] % (i + 1) === 0;
             return (
               <Grid
                 item
                 md={arrOfNums[i] % (i + 1) === 0 ? 5 : 7}
                 sm={arrOfNums[i] % (i + 1) === 0 ? 6 : 6}
                 xs={arrOfNums[i] % (i + 1) === 0 ? 12 : 12}
-                component={'a'}
-                href='#'
                 key={content.header}
-                onMouseEnter={() => handleShowWarning(i)}
-                onMouseLeave={() => handleShowWarning(null)}
+                // onMouseLeave={() => handleShowWarning(null)}
               >
                 <Box
+                  onClick={() => handleClick(i, content.url, urlClick)}
                   width={'100%'}
                   height={'50vh'}
                   position='relative'
-                  href='#'
+                  sx={{ cursor: 'pointer' }}
                 >
                   <Box
                     component={'img'}
                     src={content.img}
-                    width='100%'
-                    height='100%'
+                    sx={{
+                      width: 1,
+                      height: 1,
+                    }}
                   />
                   <Box
                     sx={{
