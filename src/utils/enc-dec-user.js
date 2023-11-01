@@ -10,12 +10,11 @@ export const encryptData = async (name, data) => {
     ).toString();
     localStorage.setItem(name, encrypted);
   } catch (error) {
-    console.log('error from encode', error);
+    console.log('error from encode', error.message);
   }
 };
 
 export const decryptData = async (name) => {
-  console.log('enc key', SECRET_KEY);
   try {
     const encrypted = await localStorage.getItem(name);
     const decrypted = await CryptoJS.AES.decrypt(
@@ -24,6 +23,11 @@ export const decryptData = async (name) => {
     ).toString(CryptoJS.enc.Utf8);
     return JSON.parse(decrypted);
   } catch (error) {
-    console.log('error from dec', error);
+    console.log('error from dec', error.message);
+    return error;
   }
+};
+
+export const logoutEnc = (name) => {
+  localStorage.removeItem(name);
 };

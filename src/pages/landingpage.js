@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import Box from '@mui/material/Box';
 import Layout from '../component/layout/layout';
 import Hero from '../component/indexPageComponents/hero';
@@ -9,21 +9,27 @@ import ScrollTo from '../utils/scroll-to';
 import RegistrationForm from '../component/forms/registration-form';
 import LoginForm from '../component/forms/login-form';
 import TechStack from '../component/indexPageComponents/tech-stacks';
-import { api } from '../api/user-api';
 import { decryptData } from '../utils/enc-dec-user';
 
 const HeroPage = () => {
   const ref = useRef('');
   const [regForm, setRegForm] = useState('register');
+  const [userData, setUserData] = useState({});
 
-  console.log('api', api);
+  const handleDecodedData = useCallback(async () => {
+    const { data, error } = await decryptData(process.env.REACT_APP_DEC_ENT);
+    if (error) return error.message;
+    setUserData(data);
+  }, []);
 
-  const handleDecodedData = async (name) => {
-    const { data, message } = await decryptData(name);
-    console.log('user data:', data, 'and message:', message);
-  };
+  console.log('data data', userData);
 
-  handleDecodedData('userData');
+  // handleDecodedData();
+  useEffect(() => {
+    handleDecodedData();
+  }, [handleDecodedData]);
+
+  console.log('data data outside console', userData);
 
   return (
     <Layout>
@@ -38,7 +44,7 @@ const HeroPage = () => {
         )}
       </Box>
       <Box ref={ref} id='Projects'>
-        <Content1 />
+        <Content1 userData={userData} />
       </Box>
       <Box ref={ref} id='Core Competence'>
         <Content2 />

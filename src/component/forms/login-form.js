@@ -15,6 +15,7 @@ import LockIcon from '@mui/icons-material/Lock';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { LOGIN_USER } from '../../api/user-api';
+import { encryptData } from '../../utils/enc-dec-user';
 
 const LoginForm = ({ setRegForm }) => {
   const [show, setShow] = useState(false);
@@ -43,9 +44,15 @@ const LoginForm = ({ setRegForm }) => {
       console.log('error from form', error?.response?.data?.error);
       setLoading(false);
     }
-    setLoading(false);
-    console.log('data', data);
-    // resetForm({ value: {} });
+
+    if (data) {
+      await encryptData(process.env.REACT_APP_DEC_ENT, data);
+
+      setLoading(false);
+      console.log('data', data);
+      window.location.replace('/');
+      // resetForm({ value: {} });
+    }
   };
 
   const formik = useFormik({

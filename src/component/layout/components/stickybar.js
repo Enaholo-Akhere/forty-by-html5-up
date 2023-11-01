@@ -6,6 +6,8 @@ import CopyUrl from '../../../utils/copy-url';
 import { useState } from 'react';
 import scrollIntoView from 'scroll-into-view-if-needed';
 import SocialButtons from './social-buttons';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { logoutEnc } from '../../../utils/enc-dec-user';
 
 const StickyBar = () => {
   const [bgColor, setBgColor] = useState('');
@@ -214,7 +216,7 @@ const StickyBar = () => {
             sx={{
               display: 'flex',
               // paddingY: 1,
-              paddingX: 3,
+              paddingX: 2,
               fontSize: '1rem',
               ml: 1,
               border: '1px solid lightgrey',
@@ -228,7 +230,7 @@ const StickyBar = () => {
             <Button
               sx={{
                 fontWeight: 600,
-                mr: 1,
+
                 fontSize: '0.8em',
                 fontFamily: 'Source Sans Pro, sans-serif',
                 zIndex: 10,
@@ -236,9 +238,23 @@ const StickyBar = () => {
                 color: 'white',
               }}
             >
-              Résumé
+              Resume
             </Button>
           </Box>
+          <Button
+            endIcon={<LogoutIcon />}
+            onClick={() => {
+              logoutEnc(process.env.REACT_APP_DEC_ENT);
+              window.location.reload();
+            }}
+            title='logout'
+            sx={{
+              fontWeight: 600,
+              fontFamily: 'Source Sans Pro, sans-serif',
+              zIndex: 10,
+              textAlign: 'center',
+            }}
+          ></Button>
         </Box>
       </Box>
     </Box>

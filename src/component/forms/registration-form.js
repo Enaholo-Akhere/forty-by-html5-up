@@ -16,7 +16,7 @@ import 'aos/dist/aos.css';
 import { REGISTER_USER } from '../../api/user-api';
 
 const RegistrationForm = ({ setRegForm }) => {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
   const [loading, setLoading] = useState(false);
   const ref = useRef(null);
 
