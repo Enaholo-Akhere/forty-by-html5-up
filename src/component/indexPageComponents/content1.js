@@ -8,10 +8,8 @@ import { useState } from 'react';
 
 const Content1 = ({ userData }) => {
   const [loginWarning, setLoginWarning] = useState(null);
-  console.log('userdata', userData);
 
   const handleClick = (id, url, urlClick) => {
-    console.log('url click', urlClick ? 'true' : 'false');
     if (userData) {
       setLoginWarning(null);
       return window.open(url, '_blank');

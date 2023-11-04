@@ -1,6 +1,6 @@
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import { useRef, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import LoadingButton from '@mui/lab/LoadingButton';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
@@ -16,12 +16,13 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { LOGIN_USER } from '../../api/user-api';
 import { encryptData } from '../../utils/enc-dec-user';
+import Modal from '../../utils/Modal';
+import ResetPasswordForm from './reset-password';
 
 const LoginForm = ({ setRegForm }) => {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
-
-  const ref = useRef(null);
 
   const initialValues = {
     email: '',
@@ -64,7 +65,6 @@ const LoginForm = ({ setRegForm }) => {
   //initializing AOS
   useEffect(() => {
     AOS.init();
-    ref.current.focus();
   }, []);
 
   return (
@@ -81,6 +81,9 @@ const LoginForm = ({ setRegForm }) => {
         margin: 'auto',
       }}
     >
+      <Modal show={showModal} setShow={setShowModal}>
+        <ResetPasswordForm setShow={setShowModal} showModal={showModal} />
+      </Modal>
       <Box
         sx={{
           display: 'flex',
@@ -111,7 +114,6 @@ const LoginForm = ({ setRegForm }) => {
           <Grid container spacing={3}>
             <Grid item xs={12}>
               <TextField
-                inputRef={ref}
                 label='Email'
                 name='email'
                 required
@@ -168,11 +170,11 @@ const LoginForm = ({ setRegForm }) => {
             <Grid item xs={6}>
               <Box sx={{ my: 0 }}>
                 <Link
-                  href=''
-                  component={'a'}
+                  onClick={() => setShowModal((prev) => !prev)}
                   sx={{
                     fontWeight: 600,
                     fontFamily: 'Source Sans Pro, sans-serif',
+                    cursor: 'pointer',
                   }}
                 >
                   Forgot password?

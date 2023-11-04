@@ -10,11 +10,28 @@ import RegistrationForm from '../component/forms/registration-form';
 import LoginForm from '../component/forms/login-form';
 import TechStack from '../component/indexPageComponents/tech-stacks';
 import { decryptData } from '../utils/enc-dec-user';
+import { ToasterProvider } from '../utils/toast-provider';
+import SetNewPasswordForm from '../component/forms/set-new-password';
+import Modal from '../utils/Modal';
+import LoggedIn from '../component/forms/logged-in';
 
 const HeroPage = () => {
   const ref = useRef('');
-  const [regForm, setRegForm] = useState('register');
+  const [regForm, setRegForm] = useState('login');
   const [userData, setUserData] = useState({});
+  const [showModal, setShowModal] = useState(false);
+
+  //fetching url params
+  const urlParams = window.location.search;
+  const parseParams = new URLSearchParams(urlParams);
+  const tm = parseParams.get('tm');
+  const token = parseParams.get('token');
+
+  useEffect(() => {
+    if (tm === 'Xbgs1Q') {
+      setShowModal(true);
+    }
+  }, [tm]);
 
   const handleDecodedData = useCallback(async () => {
     const { data, error } = await decryptData(process.env.REACT_APP_DEC_ENT);
@@ -22,27 +39,34 @@ const HeroPage = () => {
     setUserData(data);
   }, []);
 
-  console.log('data data', userData);
-
-  // handleDecodedData();
   useEffect(() => {
     handleDecodedData();
   }, [handleDecodedData]);
 
-  console.log('data data outside console', userData);
-
   return (
-    <Layout>
+    <Layout userData={userData}>
+      <Modal show={showModal} setShow={setShowModal}>
+        <SetNewPasswordForm token={token} />
+      </Modal>
+      <ToasterProvider />
       <Box ref={ref} id='Home'>
         <Hero />
       </Box>
-      <Box ref={ref} id='Register'>
-        {regForm === 'register' ? (
-          <RegistrationForm setRegForm={setRegForm} />
-        ) : (
-          <LoginForm setRegForm={setRegForm} />
-        )}
-      </Box>
+
+      {userData ? (
+        <Box>
+          <LoggedIn userData={userData} />
+        </Box>
+      ) : (
+        <Box ref={ref} id='Register'>
+          {regForm !== 'login' ? (
+            <RegistrationForm setRegForm={setRegForm} />
+          ) : (
+            <LoginForm setRegForm={setRegForm} />
+          )}
+        </Box>
+      )}
+
       <Box ref={ref} id='Projects'>
         <Content1 userData={userData} />
       </Box>
