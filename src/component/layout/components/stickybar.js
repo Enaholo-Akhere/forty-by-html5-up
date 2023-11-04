@@ -8,8 +8,9 @@ import scrollIntoView from 'scroll-into-view-if-needed';
 import SocialButtons from './social-buttons';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { logoutEnc } from '../../../utils/enc-dec-user';
+import { LOGOUT } from '../../../api/user-api';
 
-const StickyBar = () => {
+const StickyBar = ({ userData }) => {
   const [bgColor, setBgColor] = useState('');
   const [color, setColor] = useState('primary.main');
   const [copied, setCopied] = useState(false);
@@ -40,6 +41,19 @@ const StickyBar = () => {
   });
 
   const leftStickyNav = ['Home', 'Projects', 'Competence', 'Contact'];
+
+  const handleLogout = async () => {
+    const { data, error } = await LOGOUT();
+    if (error) {
+      console.log(error.message);
+    }
+
+    if (data) {
+      console.log('data from line 52', data);
+      logoutEnc(process.env.REACT_APP_DEC_ENT);
+      window.location.reload();
+    }
+  };
 
   return (
     <Box
@@ -241,20 +255,19 @@ const StickyBar = () => {
               Resume
             </Button>
           </Box>
-          <Button
-            endIcon={<LogoutIcon />}
-            onClick={() => {
-              logoutEnc(process.env.REACT_APP_DEC_ENT);
-              window.location.reload();
-            }}
-            title='logout'
-            sx={{
-              fontWeight: 600,
-              fontFamily: 'Source Sans Pro, sans-serif',
-              zIndex: 10,
-              textAlign: 'center',
-            }}
-          ></Button>
+          {userData && userData && (
+            <Button
+              endIcon={<LogoutIcon />}
+              onClick={handleLogout}
+              title='logout'
+              sx={{
+                fontWeight: 600,
+                fontFamily: 'Source Sans Pro, sans-serif',
+                zIndex: 10,
+                textAlign: 'center',
+              }}
+            />
+          )}
         </Box>
       </Box>
     </Box>

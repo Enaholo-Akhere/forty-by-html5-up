@@ -1,6 +1,6 @@
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import { useRef, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import LoadingButton from '@mui/lab/LoadingButton';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
@@ -14,11 +14,11 @@ import InputAdornment from '@mui/material/InputAdornment';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { REGISTER_USER } from '../../api/user-api';
+import { Toaster } from '../../utils/toast-provider';
 
 const RegistrationForm = ({ setRegForm }) => {
   const [show, setShow] = useState(true);
   const [loading, setLoading] = useState(false);
-  const ref = useRef(null);
 
   const initialValues = {
     name: '',
@@ -47,12 +47,13 @@ const RegistrationForm = ({ setRegForm }) => {
     delete value.confirmPassword;
     const { error, data } = await REGISTER_USER(value);
     if (error) {
-      console.log('error from form', error?.response?.data?.error);
+      Toaster.warning(error.response.data.message);
       setLoading(false);
     }
-    setLoading(false);
-    console.log('data', data);
-    // resetForm({ value: {} });
+    if (data) {
+      setLoading(false);
+      resetForm({ value: {} });
+    }
   };
 
   const formik = useFormik({
@@ -64,7 +65,6 @@ const RegistrationForm = ({ setRegForm }) => {
   //initializing AOS
   useEffect(() => {
     AOS.init();
-    ref.current.focus();
   }, []);
 
   return (
@@ -111,7 +111,6 @@ const RegistrationForm = ({ setRegForm }) => {
           <Grid container spacing={3}>
             <Grid item xs={12} md={6}>
               <TextField
-                inputRef={ref}
                 label='Full name'
                 name='name'
                 type='text'
