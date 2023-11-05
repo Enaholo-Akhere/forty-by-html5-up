@@ -13,7 +13,7 @@ import { decryptData } from '../utils/enc-dec-user';
 import { ToasterProvider } from '../utils/toast-provider';
 import SetNewPasswordForm from '../component/forms/set-new-password';
 import Modal from '../utils/Modal';
-import LoggedIn from '../component/forms/logged-in';
+import LoggedIn from '../component/indexPageComponents/logged-in';
 
 const HeroPage = () => {
   const ref = useRef('');

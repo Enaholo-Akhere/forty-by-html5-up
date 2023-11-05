@@ -1,11 +1,11 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import EditAccountForm from './edit-account';
+import EditAccountForm from '../forms/edit-account';
 import Modal from '../../utils/Modal';
 import { useState } from 'react';
-import ResetPasswordForm from './reset-password';
-import DeleteAccount from './delete-account';
+import ResetPasswordForm from '../forms/reset-password';
+import DeleteAccount from '../forms/delete-account';
 
 const LoggedIn = ({ userData }) => {
   const [showEdit, setShowEdit] = useState(false);
@@ -45,14 +45,33 @@ const LoggedIn = ({ userData }) => {
         />
       </Modal>
       <Box sx={{}}>
-        <Typography variant='h3' sx={{ textAlign: 'center' }}>
+        <Typography
+          variant='h3'
+          sx={{
+            textAlign: 'center',
+            fontSize: {
+              xs: '1.5rem',
+              sm: '2rem',
+              md: '3rem',
+            },
+            fontFamily: 'Source Sans Pro, sans-serif',
+            fontWeighnt: 600,
+          }}
+        >
           {userData.name}
         </Typography>
         <Typography variant='subtitle1' sx={{ textAlign: 'center' }}>
           {userData.email}
         </Typography>
       </Box>
-      <Box sx={{ display: 'flex', gap: 2 }}>
+      <Box
+        sx={{
+          display: 'flex',
+          gap: 2,
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+        }}
+      >
         <Button variant='contained' onClick={() => setShowEdit(true)}>
           Edit Account
         </Button>

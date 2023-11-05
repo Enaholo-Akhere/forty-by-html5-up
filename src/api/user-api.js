@@ -1,5 +1,8 @@
 import axios from 'axios';
+import fileDownload from 'js-file-download';
 import { decryptData } from '../utils/enc-dec-user';
+import { Toaster } from '../utils/toast-provider';
+
 export const api = process.env.REACT_APP_API_DEV;
 const baseUrl = process.env.REACT_APP_BASE_URL_DEV;
 
@@ -22,18 +25,10 @@ export const LOGIN_USER = async (userData) => {
 };
 
 export const FORGOT_PASSWORD = async (email) => {
-  const { data: userData } = await decryptData(process.env.REACT_APP_DEC_ENT);
-  const { token, refreshed_token } = userData;
   try {
     const { data } = await axios.post(
       `${baseUrl}/request-reset-password`,
-      email,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'x-refresh-token': refreshed_token,
-        },
-      }
+      email
     );
     return { data };
   } catch (error) {
@@ -42,18 +37,10 @@ export const FORGOT_PASSWORD = async (email) => {
 };
 
 export const RESET_PASSWORD = async (password, passwordToken) => {
-  const { data: userData } = await decryptData(process.env.REACT_APP_DEC_ENT);
-  const { token, refreshed_token } = userData;
   try {
     const { data } = await axios.post(
       `${baseUrl}/set-new-password/${passwordToken}`,
-      password,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'x-refresh-token': refreshed_token,
-        },
-      }
+      password
     );
     return { data };
   } catch (error) {
@@ -118,5 +105,28 @@ export const DELETE_ACCOUNT = async (userId) => {
     return { data };
   } catch (error) {
     return { error };
+  }
+};
+
+export const DOWNLOAD_RESUME = async () => {
+  const { data: userData } = await decryptData(process.env.REACT_APP_DEC_ENT);
+  const { token, refreshed_token } = userData;
+
+  try {
+    const file = await axios.get(`${baseUrl}/download-resume`, {
+      responseType: 'blob',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'x-refresh-token': refreshed_token,
+      },
+    });
+
+    fileDownload(file.data, 'Resume-Enaholo-Akhere');
+  } catch (error) {
+    const message =
+      error.response.statusText === 'Unauthorized'
+        ? 'Please login to download CV'
+        : error.response.statusText;
+    Toaster.warning(message);
   }
 };

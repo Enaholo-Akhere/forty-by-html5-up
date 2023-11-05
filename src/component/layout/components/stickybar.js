@@ -9,6 +9,7 @@ import SocialButtons from './social-buttons';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { logoutEnc } from '../../../utils/enc-dec-user';
 import { LOGOUT } from '../../../api/user-api';
+import { DOWNLOAD_RESUME } from '../../../api/user-api';
 
 const StickyBar = ({ userData }) => {
   const [bgColor, setBgColor] = useState('');
@@ -49,7 +50,6 @@ const StickyBar = ({ userData }) => {
     }
 
     if (data) {
-      console.log('data from line 52', data);
       logoutEnc(process.env.REACT_APP_DEC_ENT);
       window.location.reload();
     }
@@ -242,6 +242,7 @@ const StickyBar = ({ userData }) => {
             }}
           >
             <Button
+              onClick={() => DOWNLOAD_RESUME()}
               sx={{
                 fontWeight: 600,
 

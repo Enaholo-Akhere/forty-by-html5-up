@@ -18,6 +18,7 @@ import { LOGIN_USER } from '../../api/user-api';
 import { encryptData } from '../../utils/enc-dec-user';
 import Modal from '../../utils/Modal';
 import ResetPasswordForm from './reset-password';
+import { Toaster } from '../../utils/toast-provider';
 
 const LoginForm = ({ setRegForm }) => {
   const [show, setShow] = useState(true);
@@ -42,7 +43,7 @@ const LoginForm = ({ setRegForm }) => {
     delete value.confirmPassword;
     const { error, data } = await LOGIN_USER(value);
     if (error) {
-      console.log('error from form', error?.response?.data?.error);
+      Toaster.warning(error.response.data.message);
       setLoading(false);
     }
 

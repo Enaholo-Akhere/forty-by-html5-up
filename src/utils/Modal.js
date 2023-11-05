@@ -11,13 +11,14 @@ const Modal = ({ children, show, setShow }) => {
     <>
       <Box
         sx={{
-          backgroundColor: 'rgba(0,0,0, 0.7)',
           position: 'fixed',
           top: 0,
           bottom: 0,
           left: 0,
           right: 0,
           zIndex: 10,
+          background: 'rgba(255, 255, 255, 0.1)',
+          backdropFilter: 'blur(5px)',
         }}
       >
         <Paper

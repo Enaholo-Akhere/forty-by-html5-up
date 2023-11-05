@@ -51,6 +51,7 @@ const RegistrationForm = ({ setRegForm }) => {
       setLoading(false);
     }
     if (data) {
+      Toaster.success(data.message);
       setLoading(false);
       resetForm({ value: {} });
     }
