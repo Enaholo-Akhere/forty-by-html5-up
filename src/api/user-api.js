@@ -110,18 +110,22 @@ export const DELETE_ACCOUNT = async (userId) => {
 
 export const DOWNLOAD_RESUME = async () => {
   const { data: userData } = await decryptData(process.env.REACT_APP_DEC_ENT);
-  const { token, refreshed_token } = userData;
 
   try {
-    const file = await axios.get(`${baseUrl}/download-resume`, {
-      responseType: 'blob',
-      headers: {
-        Authorization: `Bearer ${token}`,
-        'x-refresh-token': refreshed_token,
-      },
-    });
+    if (userData) {
+      const { token, refreshed_token } = userData;
+      const file = await axios.get(`${baseUrl}/download-resume`, {
+        responseType: 'blob',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'x-refresh-token': refreshed_token,
+        },
+      });
 
-    fileDownload(file.data, 'Resume-Enaholo-Akhere');
+      fileDownload(file.data, 'Resume-Enaholo-Akhere');
+    } else {
+      Toaster.warning('Please Login to download Resume');
+    }
   } catch (error) {
     const message =
       error.response.statusText === 'Unauthorized'

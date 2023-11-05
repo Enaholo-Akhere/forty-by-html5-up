@@ -10,6 +10,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import { logoutEnc } from '../../../utils/enc-dec-user';
 import { LOGOUT } from '../../../api/user-api';
 import { DOWNLOAD_RESUME } from '../../../api/user-api';
+import enas_logo from '../../../assets/enas_folio.png';
 
 const StickyBar = ({ userData }) => {
   const [bgColor, setBgColor] = useState('');
@@ -73,9 +74,12 @@ const StickyBar = ({ userData }) => {
             justifyContent: 'center',
             alignContent: 'center',
             display: { xs: 'none', sm: 'flex' },
+            width: 50,
+            height: 50,
           }}
         >
-          <Typography
+          <Box component={'img'} src={enas_logo} sx={{ width: 1, height: 1 }} />
+          {/* <Typography
             variant='h1'
             sx={{
               fontWeight: '600',
@@ -88,7 +92,7 @@ const StickyBar = ({ userData }) => {
             }}
           >
             Enas-Folio
-          </Typography>
+          </Typography> */}
         </Box>
         <Box
           sx={{
