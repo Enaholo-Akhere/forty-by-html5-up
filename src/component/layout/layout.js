@@ -5,7 +5,7 @@ import StickyBar from './components/stickybar';
 
 function Layout({ children, userData }) {
   return (
-    <Box onMouseLeave={() => alert('hello world')}>
+    <Box>
       <Box>
         <StickyBar userData={userData} />
       </Box>
