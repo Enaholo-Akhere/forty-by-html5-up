@@ -21,7 +21,6 @@ const HeroPage = () => {
   const [userData, setUserData] = useState({});
   const [showModal, setShowModal] = useState(false);
 
-  //fetching url params
   const urlParams = window.location.search;
   const parseParams = new URLSearchParams(urlParams);
   const tm = parseParams.get('tm');
