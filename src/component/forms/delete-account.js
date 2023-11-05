@@ -42,8 +42,9 @@ const DeleteAccount = ({ userData }) => {
           variant='contained'
           type='submit'
           color='primary'
+          fullWidth
           sx={{
-            width: { xs: '100%', md: 350 },
+            width: { xs: 350, md: 350 },
             borderRadius: 5,
             fontWeight: 600,
             fontFamily: 'Source Sans Pro, sans-serif',
