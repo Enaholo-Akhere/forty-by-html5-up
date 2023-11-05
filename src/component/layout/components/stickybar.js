@@ -1,5 +1,4 @@
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 import IosShareIcon from '@mui/icons-material/IosShare';
 import Button from '@mui/material/Button';
 import CopyUrl from '../../../utils/copy-url';
@@ -79,20 +78,6 @@ const StickyBar = ({ userData }) => {
           }}
         >
           <Box component={'img'} src={enas_logo} sx={{ width: 1, height: 1 }} />
-          {/* <Typography
-            variant='h1'
-            sx={{
-              fontWeight: '600',
-              color: 'black',
-              fontSize: '1.26rem',
-              padding: 1,
-              pr: 3,
-              fontFamily: 'Source Sans Pro, sans-serif',
-              cursor: 'pointer',
-            }}
-          >
-            Enas-Folio
-          </Typography> */}
         </Box>
         <Box
           sx={{
