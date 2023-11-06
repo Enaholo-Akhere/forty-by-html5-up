@@ -5,7 +5,6 @@ import CloseIcon from '@mui/icons-material/Close';
 import Paper from '@mui/material/Paper';
 
 const Modal = ({ children, show, setShow }) => {
-  console.log(show);
   if (show === false) return null;
   return ReactDom.createPortal(
     <>
