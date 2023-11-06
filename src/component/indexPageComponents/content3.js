@@ -4,7 +4,6 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import { Button, Container } from '@mui/material';
 import contactDetails from '../../utils/contactDetails';
-import Divider from '@mui/material/Divider';
 
 const Content3 = () => {
   return (
