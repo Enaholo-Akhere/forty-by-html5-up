@@ -13,8 +13,12 @@ const Content3 = () => {
         backgroundColor: 'rgb(8, 16, 40)',
         border: '0.5px solid gray',
         overflow: 'hidden',
+        py: 3,
       }}
     >
+      <Typography variant='h3' sx={{ color: 'white', textAlign: 'center' }}>
+        Contact Me
+      </Typography>
       <Container sx={{ backgroundColor: 'inherit' }}>
         <Grid container spacing={3} pt={3}>
           <Grid
@@ -174,7 +178,7 @@ const Content3 = () => {
             xs={12}
             md={5}
             sx={{
-              borderLeft: '0.5px solid gray',
+              // borderLeft: '0.5px solid gray',
               pt: 5,
             }}
           >
@@ -186,12 +190,23 @@ const Content3 = () => {
                     sx={{
                       display: 'flex',
                       flexDirection: 'column',
-                      mr: 5,
-                      paddingLeft: 5,
-                      paddingBottom: 10,
+                      // mr: 5,
+                      py: 5,
+                      px: 2,
+                      border: '1px solid gray',
+                      // width: '100%',
+                      height: '23%',
+                      margin: 'auto',
                     }}
                   >
-                    <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        width: 1,
+                        height: 1,
+                      }}
+                    >
                       <Box
                         sx={{
                           borderRadius: 100,
@@ -237,7 +252,7 @@ const Content3 = () => {
                         </Typography>
                       </Box>
                     </Box>
-                    <Box
+                    {/* <Box
                       sx={{
                         display: i === 2 ? 'none' : 'flex',
                         justifyContent: 'center',
@@ -257,7 +272,7 @@ const Content3 = () => {
                           zIndex: 1,
                         }}
                       />
-                    </Box>
+                    </Box> */}
                   </Box>
                 );
               })}

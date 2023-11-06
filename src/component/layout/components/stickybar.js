@@ -72,7 +72,7 @@ const StickyBar = ({ userData }) => {
           sx={{
             justifyContent: 'center',
             alignContent: 'center',
-            display: { xs: 'none', sm: 'flex' },
+            display: 'flex',
             width: 50,
             height: 50,
           }}
