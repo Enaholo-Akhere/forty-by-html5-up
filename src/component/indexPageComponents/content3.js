@@ -2,10 +2,42 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
-import { Button, Container } from '@mui/material';
+import { Container } from '@mui/material';
 import contactDetails from '../../utils/contactDetails';
+import * as Yup from 'yup';
+import { useFormik } from 'formik';
+import { useState } from 'react';
+import LoadingButton from '@mui/lab/LoadingButton';
+import { MESSAGE_ME } from '../../api/user-api';
 
 const Content3 = () => {
+  const [loading, setLoading] = useState(false);
+
+  const initialValues = {
+    name: '',
+    email: '',
+    message: '',
+  };
+
+  const validationSchema = Yup.object({
+    name: Yup.string().max(30, 'maximum character exceeded').required(),
+    email: Yup.string().email().required(),
+    message: Yup.string().max(1000).required(),
+  });
+
+  const onSubmit = async (value, { resetForm }) => {
+    setLoading(true);
+    const { data } = await MESSAGE_ME(value);
+    console.log('form value', data);
+    alert(JSON.stringify(value));
+  };
+
+  const formik = useFormik({
+    initialValues,
+    validationSchema,
+    onSubmit,
+  });
+
   return (
     <Box
       sx={{
@@ -27,7 +59,7 @@ const Content3 = () => {
             sx={{ paddingX: { xs: 0, md: 5 }, mb: 10, pt: 5 }}
           >
             <Box sx={{ width: '100%' }}>
-              <form>
+              <form onSubmit={formik.handleSubmit}>
                 <Grid container spacing={3}>
                   <Grid item xs={12} md={6}>
                     <Typography
@@ -44,9 +76,17 @@ const Content3 = () => {
                       NAME
                     </Typography>
                     <TextField
+                      label='Full name'
+                      name='name'
+                      required
                       variant='outlined'
-                      type='text'
+                      placeholder='John Doe'
+                      error={Boolean(formik.touched.name && formik.errors.name)}
                       fullWidth
+                      helperText={formik.touched.name && formik.errors.name}
+                      onBlur={formik.handleBlur}
+                      onChange={formik.handleChange}
+                      value={formik.values.name}
                       sx={{
                         backgroundColor: 'rgb(11, 22, 53)',
                         mt: 2,
@@ -73,9 +113,19 @@ const Content3 = () => {
                       EMAIL
                     </Typography>
                     <TextField
+                      label='Email'
+                      name='email'
+                      required
                       variant='outlined'
-                      type='text'
+                      placeholder='johndoe@gmail.com'
+                      error={Boolean(
+                        formik.touched.email && formik.errors.email
+                      )}
                       fullWidth
+                      helperText={formik.touched.email && formik.errors.email}
+                      onBlur={formik.handleBlur}
+                      onChange={formik.handleChange}
+                      value={formik.values.email}
                       sx={{
                         backgroundColor: 'rgb(11, 22, 53)',
                         mt: 2,
@@ -107,8 +157,18 @@ const Content3 = () => {
                       multiline={true}
                       minRows={10}
                       variant='outlined'
+                      name='message'
                       type='text'
                       fullWidth
+                      error={Boolean(
+                        formik.touched.message && formik.errors.message
+                      )}
+                      helperText={
+                        formik.touched.message && formik.errors.message
+                      }
+                      onBlur={formik.handleBlur}
+                      onChange={formik.handleChange}
+                      value={formik.values.message}
                       sx={{
                         backgroundColor: 'rgb(11, 22, 53)',
                         letterSpacing: 3,
@@ -133,9 +193,11 @@ const Content3 = () => {
                         width: '100%',
                       }}
                     >
-                      <Button
+                      <LoadingButton
                         fullWidth={false}
                         variant='contained'
+                        loading={loading}
+                        type='submit'
                         sx={{
                           bgcolor: 'white',
                           color: 'rgb(8, 16, 40)',
@@ -148,24 +210,7 @@ const Content3 = () => {
                         }}
                       >
                         SEND MESSAGE
-                      </Button>
-                      <Button
-                        variant='outlined'
-                        fullWidth={false}
-                        sx={{
-                          bgcolor: 'rgb(8, 16, 40)',
-                          color: 'white',
-                          fontFamily: 'Source, Sans Pro, sans-serif',
-                          zIndex: 10,
-                          fontWeight: 400,
-                          border: '1px solid white',
-                          letterSpacing: 3,
-                          px: 3,
-                          py: { xs: 1, md: 2 },
-                        }}
-                      >
-                        CLEAR
-                      </Button>
+                      </LoadingButton>
                     </Box>
                   </Grid>
                 </Grid>
@@ -251,27 +296,6 @@ const Content3 = () => {
                         </Typography>
                       </Box>
                     </Box>
-                    {/* <Box
-                      sx={{
-                        display: i === 2 ? 'none' : 'flex',
-                        justifyContent: 'center',
-                        alignContent: 'center',
-                        width: '100%',
-                        marginTop: 10,
-                        paddingLeft: 10,
-                      }}
-                    >
-                      <Divider
-                        variant='fullWidth'
-                        light
-                        sx={{
-                          color: 'white',
-                          width: '176%',
-                          border: '0.5px solid gray',
-                          zIndex: 1,
-                        }}
-                      />
-                    </Box> */}
                   </Box>
                 );
               })}
