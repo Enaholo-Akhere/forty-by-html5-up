@@ -15,6 +15,15 @@ export const REGISTER_USER = async (userData) => {
   }
 };
 
+export const MESSAGE_ME = async (userData) => {
+  try {
+    const { data } = await axios.post(`${baseUrl}/send-message`, userData);
+    return { data };
+  } catch (error) {
+    return { error };
+  }
+};
+
 export const LOGIN_USER = async (userData) => {
   try {
     const { data } = await axios.post(`${baseUrl}/login`, userData);
