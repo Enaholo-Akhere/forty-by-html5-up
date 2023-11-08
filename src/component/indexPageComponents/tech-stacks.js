@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import ParallaxComp from './parallax';
+import { techStacks } from '../../utils/tech-stacks';
 
 const TechStack = () => {
   //initializing AOS
@@ -30,57 +31,31 @@ const TechStack = () => {
             display: 'flex',
             justifyContent: 'space-around',
             flexWrap: 'wrap',
+            gap: 1.5,
           }}
         >
-          <Box sx={{ width: 200, height: 200 }}>
-            <Box
-              sx={{ width: 1, height: 1, borderRadius: 50, p: 2 }}
-              component={'img'}
-              src='https://icons.veryicon.com/png/o/business/vscode-program-item-icon/typescript-def.png'
-            />
-          </Box>
-          <Box>
-            <Box
-              sx={{ width: 100, height: 100, borderRadius: 50, p: 2 }}
-              component={'img'}
-              src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1150px-React-icon.svg.png'
-            />
-          </Box>
-          <Box sx={{ width: 200, height: 200 }}>
-            <Box
-              component={'img'}
-              sx={{ width: 1, height: 1, borderRadius: 50, p: 2 }}
-              src='https://cdn-icons-png.flaticon.com/512/5968/5968292.png'
-            />
-          </Box>
-          <Box sx={{ width: 150, height: 150 }}>
-            <Box
-              component={'img'}
-              sx={{ width: 1, height: 1, borderRadius: 50, p: 2 }}
-              src='https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/2560px-Node.js_logo.svg.png'
-            />
-          </Box>
-          <Box sx={{ width: 150, height: 150, p: 2 }}>
-            <Box
-              component={'img'}
-              sx={{ width: '100%', height: '100%', borderRadius: 10, p: 2 }}
-              src='https://w7.pngwing.com/pngs/441/460/png-transparent-postgresql-plain-wordmark-logo-icon-thumbnail.png'
-            />
-          </Box>
-          <Box sx={{ width: 150, height: 150 }}>
-            <Box
-              component={'img'}
-              sx={{ width: 1, height: 1, borderRadius: 10 }}
-              src='https://www.pngall.com/wp-content/uploads/13/Mongodb-PNG-Image-HD.png'
-            />
-          </Box>
-          <Box sx={{ width: 200, height: 200 }}>
-            <Box
-              component={'img'}
-              sx={{ width: 1, height: 1, borderRadius: 10 }}
-              src='https://static-00.iconduck.com/assets.00/nextjs-icon-2048x1234-pqycciiu.png'
-            />
-          </Box>
+          {techStacks.map((stack) => {
+            return (
+              <Box key={stack.src}>
+                <Box
+                  sx={{
+                    width: { xs: stack.xs, md: stack.md },
+                    height: { xs: stack.xs, md: stack.md },
+                  }}
+                >
+                  <Box
+                    sx={{
+                      width: 1,
+                      height: 1,
+                      borderRadius: stack.bRadius,
+                    }}
+                    component={'img'}
+                    src={stack.src}
+                  />
+                </Box>
+              </Box>
+            );
+          })}
         </Box>
       </Container>
     </ParallaxComp>

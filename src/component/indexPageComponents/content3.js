@@ -9,6 +9,7 @@ import { useFormik } from 'formik';
 import { useState } from 'react';
 import LoadingButton from '@mui/lab/LoadingButton';
 import { MESSAGE_ME } from '../../api/user-api';
+import { Toaster } from '../../utils/toast-provider';
 
 const Content3 = () => {
   const [loading, setLoading] = useState(false);
@@ -17,19 +18,29 @@ const Content3 = () => {
     name: '',
     email: '',
     message: '',
+    subject: '',
   };
 
   const validationSchema = Yup.object({
     name: Yup.string().max(30, 'maximum character exceeded').required(),
     email: Yup.string().email().required(),
     message: Yup.string().max(1000).required(),
+    subject: Yup.string().max(250).required(),
   });
 
   const onSubmit = async (value, { resetForm }) => {
     setLoading(true);
-    const { data } = await MESSAGE_ME(value);
-    console.log('form value', data);
-    alert(JSON.stringify(value));
+    const { data, error } = await MESSAGE_ME(value);
+    if (error) {
+      setLoading(false);
+      Toaster.warning(error.response.data.message);
+    }
+
+    if (data) {
+      setLoading(false);
+      Toaster.success(data.message);
+      resetForm({ value: '' });
+    }
   };
 
   const formik = useFormik({
@@ -44,7 +55,7 @@ const Content3 = () => {
         backgroundColor: 'rgb(8, 16, 40)',
         border: '0.5px solid gray',
         overflow: 'hidden',
-        py: 3,
+        py: 5,
       }}
     >
       <Typography variant='h3' sx={{ color: 'white', textAlign: 'center' }}>
@@ -145,6 +156,47 @@ const Content3 = () => {
                         fontFamily: 'Source, Sans Pro, sans-serif',
                         zIndex: 10,
                         color: 'white',
+                        letterSpacing: 3,
+                        fontWeight: 600,
+                      }}
+                    >
+                      SUBJECT
+                    </Typography>
+                    <TextField
+                      label='Subject'
+                      name='subject'
+                      required
+                      variant='outlined'
+                      placeholder='Requesting Interview Schedule'
+                      error={Boolean(
+                        formik.touched.subject && formik.errors.subject
+                      )}
+                      fullWidth
+                      helperText={
+                        formik.touched.subject && formik.errors.subject
+                      }
+                      onBlur={formik.handleBlur}
+                      onChange={formik.handleChange}
+                      value={formik.values.subject}
+                      sx={{
+                        backgroundColor: 'rgb(11, 22, 53)',
+                        mt: 2,
+                        input: {
+                          color: 'white',
+                          fontFamily: 'Source Sans Pro, sans-serif',
+                          fontWeight: 600,
+                        },
+                      }}
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Typography
+                      variant='p'
+                      sx={{
+                        textAlign: 'left',
+                        fontFamily: 'Source, Sans Pro, sans-serif',
+                        zIndex: 10,
+                        color: 'white',
                         fontWeight: 600,
                         letterSpacing: 3,
                         outline: 'none',
@@ -194,12 +246,11 @@ const Content3 = () => {
                       }}
                     >
                       <LoadingButton
-                        fullWidth={false}
                         variant='contained'
                         loading={loading}
                         type='submit'
                         sx={{
-                          bgcolor: 'white',
+                          // bgcolor: 'white',
                           color: 'rgb(8, 16, 40)',
                           fontFamily: 'Source, Sans Pro, sans-serif',
                           fontWeight: 400,
@@ -207,6 +258,7 @@ const Content3 = () => {
                           paddingY: { xs: 1, md: 2 },
                           letterSpacing: 3,
                           mr: 3,
+                          '&: disabled': { bgcolor: 'gray' },
                         }}
                       >
                         SEND MESSAGE
@@ -221,10 +273,12 @@ const Content3 = () => {
             item
             xs={12}
             md={5}
-            sx={{
-              // borderLeft: '0.5px solid gray',
-              pt: 5,
-            }}
+            sx={
+              {
+                // borderLeft: '0.5px solid gray',
+                // pt: 5,
+              }
+            }
           >
             {contactDetails &&
               contactDetails.map((contact, i) => {
@@ -239,7 +293,7 @@ const Content3 = () => {
                       px: 2,
                       border: '1px solid gray',
                       // width: '100%',
-                      height: '23%',
+                      height: { xs: '20%', md: '25%' },
                       margin: 'auto',
                     }}
                   >
@@ -249,6 +303,7 @@ const Content3 = () => {
                         flexDirection: 'row',
                         width: 1,
                         height: 1,
+                        alignItems: 'center',
                       }}
                     >
                       <Box
@@ -283,6 +338,15 @@ const Content3 = () => {
                         </Typography>
                         <Typography
                           variant='body'
+                          component={'a'}
+                          target='_blank'
+                          href={
+                            contact.title === 'PHONE'
+                              ? 'tel:+2349052781743'
+                              : contact.title === 'EMAIL'
+                              ? 'mailto:enaholoa@gmail.com'
+                              : 'http://maps.google.com/?q=Lekki-Ajah,%20Lagos.%20Nigeria'
+                          }
                           sx={{
                             fontFamily: 'Source, Sans Pro, sans-serif',
                             fontWeight: 300,
