@@ -15,9 +15,10 @@ const Modal = ({ children, show, setShow }) => {
           bottom: 0,
           left: 0,
           right: 0,
-          zIndex: 10,
+          zIndex: 20,
           background: 'rgba(255, 255, 255, 0.1)',
           backdropFilter: 'blur(5px)',
+          overflow: 'auto',
         }}
       >
         <Paper
@@ -25,13 +26,15 @@ const Modal = ({ children, show, setShow }) => {
             display: 'flex',
             flexDirection: 'column',
             width: { xs: '90%', md: '80%' },
+            height: { xs: '90%', md: '80%' },
             margin: 'auto',
             position: 'fixed',
             top: '50%',
             left: '50%',
             zIndex: 1000,
             transform: 'translate(-50%, -50%)',
-            p: 2,
+            p: 3,
+            boxShadow: ' 15px 15px 50px  rgb(200, 123, 12)',
           }}
         >
           <Box
@@ -40,6 +43,7 @@ const Modal = ({ children, show, setShow }) => {
               justifyContent: 'flex-end',
               fontWeight: 600,
               color: 'white',
+              zIndex: 1,
             }}
           >
             <CloseIcon
