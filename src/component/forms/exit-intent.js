@@ -55,7 +55,7 @@ const ExitIntent = ({ show, setShow }) => {
       onClick={() => {
         setShow(true);
       }}
-      sx={{ margin: 'auto', p: 1 }}
+      sx={{ margin: 'auto' }}
     >
       <Grid container spacing={3} sx={{}}>
         <Grid item xs={0} md={5}>
