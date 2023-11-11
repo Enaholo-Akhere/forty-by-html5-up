@@ -13,7 +13,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { RESET_PASSWORD } from '../../api/user-api';
-import { Toaster } from '../../utils/toast-provider';
+import { Toaster } from '../../providers/toast-provider';
 
 const SetNewPasswordForm = ({ token }) => {
   const [show, setShow] = useState(true);

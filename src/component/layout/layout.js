@@ -20,6 +20,7 @@ function Layout({ children, userData }) {
   window.localStorage.setItem('exit', false);
 
   useEffect(() => {}, []);
+
   console.log('data', data ? 'true' : 'false');
 
   return (

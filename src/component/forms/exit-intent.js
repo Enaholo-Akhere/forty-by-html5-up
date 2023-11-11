@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import { useState } from 'react';
 import * as Yup from 'yup';
-import { Toaster } from '../../utils/toast-provider';
+import { Toaster } from '../../providers/toast-provider';
 import { MESSAGE_ME } from '../../api/user-api';
 import { useFormik } from 'formik';
 import LoadingButton from '@mui/lab/LoadingButton';

@@ -18,7 +18,7 @@ import { LOGIN_USER } from '../../api/user-api';
 import { encryptData } from '../../utils/enc-dec-user';
 import Modal from '../../utils/Modal';
 import ResetPasswordForm from './reset-password';
-import { Toaster } from '../../utils/toast-provider';
+import { Toaster } from '../../providers/toast-provider';
 
 const LoginForm = ({ setRegForm }) => {
   const [show, setShow] = useState(true);

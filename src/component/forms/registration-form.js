@@ -14,7 +14,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { REGISTER_USER } from '../../api/user-api';
-import { Toaster } from '../../utils/toast-provider';
+import { Toaster } from '../../providers/toast-provider';
 
 const RegistrationForm = ({ setRegForm }) => {
   const [show, setShow] = useState(true);
