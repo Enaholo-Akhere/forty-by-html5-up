@@ -10,7 +10,6 @@ import RegistrationForm from '../component/forms/registration-form';
 import LoginForm from '../component/forms/login-form';
 import TechStack from '../component/indexPageComponents/tech-stacks';
 import { decryptData } from '../utils/enc-dec-user';
-import { ToasterProvider } from '../utils/toast-provider';
 import SetNewPasswordForm from '../component/forms/set-new-password';
 import Modal from '../utils/Modal';
 import LoggedIn from '../component/indexPageComponents/logged-in';
@@ -47,7 +46,6 @@ const HeroPage = () => {
       <Modal show={showModal} setShow={setShowModal}>
         <SetNewPasswordForm token={token} />
       </Modal>
-      <ToasterProvider />
       <Box ref={ref} id='Home'>
         <Hero />
       </Box>

@@ -10,7 +10,7 @@ import Container from '@mui/material/Container';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { FORGOT_PASSWORD } from '../../api/user-api';
-import { Toaster } from '../../utils/toast-provider';
+import { Toaster } from '../../providers/toast-provider';
 
 const ResetPasswordForm = ({ showModal }) => {
   const [loading, setLoading] = useState(false);

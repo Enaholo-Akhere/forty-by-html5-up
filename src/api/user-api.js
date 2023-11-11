@@ -1,7 +1,7 @@
 import axios from 'axios';
 import fileDownload from 'js-file-download';
 import { decryptData } from '../utils/enc-dec-user';
-import { Toaster } from '../utils/toast-provider';
+import { Toaster } from '../providers/toast-provider';
 
 export const api = process.env.REACT_APP_API_DEV;
 const baseUrl = process.env.REACT_APP_BASE_URL_DEV;

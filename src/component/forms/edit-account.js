@@ -10,7 +10,7 @@ import Container from '@mui/material/Container';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { EDIT_ACCOUNT } from '../../api/user-api';
-import { Toaster } from '../../utils/toast-provider';
+import { Toaster } from '../../providers/toast-provider';
 import { encryptData } from '../../utils/enc-dec-user';
 
 const EditAccountForm = ({ showModal, userData }) => {

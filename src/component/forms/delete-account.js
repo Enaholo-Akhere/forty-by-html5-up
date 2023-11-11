@@ -3,7 +3,7 @@ import Typography from '@mui/material/Typography';
 import { DELETE_ACCOUNT } from '../../api/user-api';
 import LoadingButton from '@mui/lab/LoadingButton';
 import { useState } from 'react';
-import { Toaster } from '../../utils/toast-provider';
+import { Toaster } from '../../providers/toast-provider';
 
 const DeleteAccount = ({ userData }) => {
   const [loading, setLoading] = useState(false);

@@ -9,7 +9,7 @@ import { useFormik } from 'formik';
 import { useState } from 'react';
 import LoadingButton from '@mui/lab/LoadingButton';
 import { MESSAGE_ME } from '../../api/user-api';
-import { Toaster } from '../../utils/toast-provider';
+import { Toaster } from '../../providers/toast-provider';
 
 const Content3 = () => {
   const [loading, setLoading] = useState(false);

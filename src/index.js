@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import { grey } from '@mui/material/colors';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { ToasterProvider } from './providers/toast-provider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -21,7 +22,9 @@ const theme = createTheme({
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <App />
+      <ToasterProvider>
+        <App />
+      </ToasterProvider>
     </ThemeProvider>
   </React.StrictMode>
 );
