@@ -12,25 +12,22 @@ function Layout({ children, userData }) {
 
   const [show, setShow] = useState(false);
   const [showMobile, setShowMobile] = useState(false);
+  const [showExit, setShowExit] = useState(true);
 
   useEffect(() => {
     setShowMobile(data);
   }, [data]);
 
-  window.localStorage.setItem('exit', false);
-
-  useEffect(() => {}, []);
-
-  console.log('data', data ? 'true' : 'false');
+  const handleMouseLeave = () => {
+    if (showExit) {
+      setShow(true);
+    }
+  };
 
   return (
-    <Box
-      onMouseLeave={() => {
-        setShow(true);
-      }}
-    >
-      <Modal show={show} setShow={setShow}>
-        <ExitIntent show={show} setShow={setShow} />
+    <Box onMouseLeave={handleMouseLeave}>
+      <Modal show={show} setShow={setShow} setShowExit={setShowExit}>
+        <ExitIntent show={show} setShow={setShow} setShowExit={setShowExit} />
       </Modal>
 
       <Modal show={showMobile} setShow={setShowMobile}>

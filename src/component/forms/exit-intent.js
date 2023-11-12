@@ -2,7 +2,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import * as Yup from 'yup';
 import { Toaster } from '../../providers/toast-provider';
 import { MESSAGE_ME } from '../../api/user-api';
@@ -10,8 +10,10 @@ import { useFormik } from 'formik';
 import LoadingButton from '@mui/lab/LoadingButton';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
-const ExitIntent = ({ show, setShow }) => {
+const ExitIntent = ({ show, setShow, setShowExit }) => {
   const [loading, setLoading] = useState(false);
   const theme = useTheme();
   const match = useMediaQuery(theme.breakpoints.down('md'));
@@ -42,6 +44,8 @@ const ExitIntent = ({ show, setShow }) => {
       setLoading(false);
       Toaster.success(data.message);
       resetForm({ value: '' });
+      setShowExit((prev) => !prev);
+      setShow((prev) => !prev);
     }
   };
 
@@ -50,26 +54,38 @@ const ExitIntent = ({ show, setShow }) => {
     validationSchema,
     onSubmit,
   });
+
+  //initializing AOS
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
     <Box
-      onClick={() => {
-        setShow(true);
+      data-aos='zoom-in'
+      data-aos-easing='ease-in-sine'
+      data-aos-duration='300'
+      sx={{
+        display: 'flex',
+        margin: 'auto',
       }}
-      sx={{ margin: 'auto' }}
     >
-      <Grid container spacing={3} sx={{}}>
+      <Grid container spacing={2}>
         <Grid item xs={0} md={5}>
           <Box
             sx={{
-              display: { xs: 'none', md: 'block' },
+              display: { xs: 'none', md: 'flex' },
               margin: 'auto',
-              height: { xs: '80%', md: '100%' },
+              height: '100%',
             }}
           >
             <Box
               component={'img'}
               src='https://www.netsolutions.com/insights/wp-content/uploads/2022/06/how-to-become-a-software-developer.webp'
-              sx={{ height: 1, width: 1 }}
+              sx={{
+                height: 1,
+                width: 1,
+              }}
             />
           </Box>
         </Grid>
@@ -81,7 +97,6 @@ const ExitIntent = ({ show, setShow }) => {
               gap: 2,
               alignItems: 'center',
               px: 2,
-              height: { xs: '80%', md: '100%' },
               justifyContent: 'center',
               margin: 'auto',
             }}
@@ -107,7 +122,13 @@ const ExitIntent = ({ show, setShow }) => {
                 interview?
               </span>
             </Typography>
-            <Typography variant='body1' sx={{ textAlign: 'center' }}>
+            <Typography
+              variant='body1'
+              sx={{
+                textAlign: 'center',
+                fontSize: '1rem',
+              }}
+            >
               I bring a wealth of expertise in full-stack development, My proven
               track record makes me the ideal candidate to elevate your team's
               capabilities and drive success in this role
@@ -129,12 +150,6 @@ const ExitIntent = ({ show, setShow }) => {
                       onBlur={formik.handleBlur}
                       onChange={formik.handleChange}
                       value={formik.values.name}
-                      sx={{
-                        input: {
-                          color: 'blue',
-                          height: 20,
-                        },
-                      }}
                     />
                   </Grid>
                   <Grid item xs={12} md={6}>
@@ -179,7 +194,8 @@ const ExitIntent = ({ show, setShow }) => {
                     <TextField
                       className='textfield'
                       multiline={true}
-                      minRows={5}
+                      maxRows={4}
+                      minRows={4}
                       variant='outlined'
                       name='message'
                       type='text'
