@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import CloseIcon from '@mui/icons-material/Close';
 import Paper from '@mui/material/Paper';
 
-const Modal = ({ children, show, setShow }) => {
+const Modal = ({ children, show, setShow, setShowExit }) => {
   if (show === false) return null;
   return ReactDom.createPortal(
     <>
@@ -25,15 +25,14 @@ const Modal = ({ children, show, setShow }) => {
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            width: { xs: '80%', md: '80%' },
-            height: { xs: '100%', md: '80%' },
+            width: '80%',
             margin: 'auto',
             position: 'fixed',
             top: '50%',
             left: '50%',
             zIndex: 21,
             transform: 'translate(-50%, -50%)',
-            my: 2,
+            // my: 2,
             p: 2,
             boxShadow: ' 15px 15px 50px  rgb(200, 123, 12)',
           }}
@@ -48,7 +47,10 @@ const Modal = ({ children, show, setShow }) => {
             }}
           >
             <CloseIcon
-              onClick={() => setShow(false)}
+              onClick={() => {
+                setShow((prev) => !prev);
+                setShowExit((prev) => !prev);
+              }}
               sx={{
                 cursor: 'pointer',
                 color: 'gray',
