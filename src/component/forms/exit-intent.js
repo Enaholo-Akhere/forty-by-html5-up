@@ -11,6 +11,8 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import AOS from 'aos';
+import Button from '@mui/material/Button';
+
 import 'aos/dist/aos.css';
 
 const ExitIntent = ({ show, setShow, setShowExit }) => {
@@ -59,6 +61,13 @@ const ExitIntent = ({ show, setShow, setShowExit }) => {
   useEffect(() => {
     AOS.init();
   }, []);
+
+  // const styles = {
+  //   height: '1000px',
+  //   textColor: '#ffffff',
+  //   color: '#2e329f',
+  //   borderRadius: '1',
+  // };
 
   return (
     <Box
@@ -211,35 +220,31 @@ const ExitIntent = ({ show, setShow, setShowExit }) => {
                       value={formik.values.message}
                     />
                   </Grid>
-                  <Grid item xs={12}>
-                    <Box
+                  <Grid item xs={12} md={12}>
+                    <LoadingButton
+                      variant='contained'
+                      loading={loading}
+                      fullWidth
+                      type='submit'
                       sx={{
-                        display: 'flex',
-                        width: '100%',
+                        // bgcolor: 'white',
+
+                        // color: 'rgb(8, 16, 40)',
+                        color: 'white',
+                        fontFamily: 'Source, Sans Pro, sans-serif',
+                        fontWeight: 600,
+                        zIndex: 10,
+                        paddingY: { xs: 1, md: 1.5 },
+                        letterSpacing: 3,
+                        //   mr: 3,
+                        '&: disabled': { bgcolor: 'gray' },
                       }}
                     >
-                      <LoadingButton
-                        variant='contained'
-                        loading={loading}
-                        fullWidth
-                        type='submit'
-                        sx={{
-                          // bgcolor: 'white',
-                          color: 'rgb(8, 16, 40)',
-                          fontFamily: 'Source, Sans Pro, sans-serif',
-                          fontWeight: 400,
-                          zIndex: 10,
-                          paddingY: { xs: 1, md: 2 },
-                          letterSpacing: 3,
-                          //   mr: 3,
-                          '&: disabled': { bgcolor: 'gray' },
-                        }}
-                      >
-                        Send Me A Message
-                      </LoadingButton>
-                    </Box>
+                      Send Me A Message
+                    </LoadingButton>
                   </Grid>
                 </Grid>
+                <Grid item xs={12} md={12}></Grid>
               </form>
             </Box>
           </Box>
