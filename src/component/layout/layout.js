@@ -49,9 +49,8 @@ function Layout({ children, userData }) {
            */
           rootElement={document.getElementById('root')}
           text='SCHEDULE A MEETING'
-          textColor='#ffffff'
+          textColor='rgb(8, 16, 40)'
           color='#00FFFF'
-          position='absolute'
         />
       </Box>
       {children}

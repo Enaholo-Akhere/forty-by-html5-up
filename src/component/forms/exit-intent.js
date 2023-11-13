@@ -61,13 +61,6 @@ const ExitIntent = ({ show, setShow, setShowExit }) => {
     AOS.init();
   }, []);
 
-  // const styles = {
-  //   height: '1000px',
-  //   textColor: '#ffffff',
-  //   color: '#2e329f',
-  //   borderRadius: '1',
-  // };
-
   return (
     <Box
       data-aos='zoom-in'
@@ -226,12 +219,9 @@ const ExitIntent = ({ show, setShow, setShowExit }) => {
                       fullWidth
                       type='submit'
                       sx={{
-                        // bgcolor: 'white',
-
-                        // color: 'rgb(8, 16, 40)',
-                        color: 'white',
+                        color: 'rgb(8, 16, 40)',
                         fontFamily: 'Source, Sans Pro, sans-serif',
-                        fontWeight: 600,
+                        fontWeight: 400,
                         zIndex: 10,
                         paddingY: { xs: 1, md: 1.5 },
                         letterSpacing: 3,
