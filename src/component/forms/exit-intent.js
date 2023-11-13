@@ -11,7 +11,6 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import AOS from 'aos';
-import Button from '@mui/material/Button';
 
 import 'aos/dist/aos.css';
 
