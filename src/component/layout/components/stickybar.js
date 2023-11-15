@@ -150,30 +150,6 @@ const StickyBar = ({ userData }) => {
             />
           </Button>
         </Box>
-        <Box sx={{ display: { xs: 'flex', sm: 'none' }, flexGrow: 1 }}>
-          <Box
-            sx={{
-              ml: 1,
-              border: '1px solid lightgrey',
-              borderRadius: 2,
-            }}
-          >
-            <Button
-              sx={{
-                fontSize: '10',
-                fontWeight: 600,
-                fontFamily: 'Source Sans Pro, sans-serif',
-                cursor: 'pointer',
-                height: 1,
-                width: '100%',
-                color: 'rgb(8, 16, 40)',
-                bgcolor: '',
-              }}
-            >
-              Docs
-            </Button>
-          </Box>
-        </Box>
       </Box>
       <Box sx={{ display: 'flex', paddingX: 1 }}>
         <SocialButtons display={'none'} />
@@ -186,40 +162,9 @@ const StickyBar = ({ userData }) => {
         >
           <Box
             sx={{
-              display: { xs: 'none', sm: 'flex' },
-              // flexGrow: 1,
-              // paddingY: 1,
-              // paddingX: 3,
-              ml: 1,
-              border: '1px solid lightgrey',
-              borderRadius: 2,
-
-              px: '',
-              fontFamily: 'Source Sans Pro, sans-serif',
-              fontWeight: '600',
-            }}
-          >
-            <Button
-              sx={{
-                fontSize: '10',
-                fontWeight: 600,
-                fontFamily: 'Source Sans Pro, sans-serif',
-                cursor: 'pointer',
-                height: 1,
-                width: '100%',
-                color: 'rgb(8, 16, 40)',
-                bgcolor: '',
-              }}
-            >
-              Docs
-            </Button>
-          </Box>
-
-          <Box
-            sx={{
               display: 'flex',
               // paddingY: 1,
-              paddingX: 2,
+              paddingX: 3,
               fontSize: '1rem',
               ml: 1,
               border: '1px solid lightgrey',
@@ -242,7 +187,7 @@ const StickyBar = ({ userData }) => {
                 color: 'white',
               }}
             >
-              Resume
+              Download Resume
             </Button>
           </Box>
           {userData && userData && (
