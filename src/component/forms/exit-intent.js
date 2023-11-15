@@ -130,9 +130,8 @@ const ExitIntent = ({ show, setShow, setShowExit }) => {
                 fontSize: '1rem',
               }}
             >
-              I bring a wealth of expertise in full-stack development, My proven
-              track record makes me the ideal candidate to elevate your team's
-              capabilities and drive success in this role
+              Please, reach out to me before you leave as I might just be the
+              perfect person for the role
             </Typography>
             <Box sx={{ width: '100%' }}>
               <form onSubmit={formik.handleSubmit}>

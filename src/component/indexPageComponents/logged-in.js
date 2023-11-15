@@ -75,7 +75,11 @@ const LoggedIn = ({ userData }) => {
         <Button variant='contained' onClick={() => setShowEdit(true)}>
           Edit Account
         </Button>
-        <Button variant='outlined' onClick={() => setShowPass(true)}>
+        <Button
+          variant='outlined'
+          onClick={() => setShowPass(true)}
+          sx={{ color: 'rgb(8, 16, 40)' }}
+        >
           Change Password
         </Button>
         <Button
