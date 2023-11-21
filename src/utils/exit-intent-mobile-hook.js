@@ -10,10 +10,10 @@ export const useExitIntentMobile = () => {
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 500) {
+      if (window.scrollY > 1000) {
         setScrState(true);
       }
-      if (window.scrollY < 500 && scrState) {
+      if (window.scrollY < 1000 && scrState) {
         setScrolling(true);
       }
     });
