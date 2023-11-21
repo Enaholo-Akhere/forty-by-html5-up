@@ -18,6 +18,7 @@ const DeleteAccount = ({ userData }) => {
     if (data) {
       setLoading(false);
       Toaster.success(data.message);
+      window.location.reload('/');
     }
   };
 
