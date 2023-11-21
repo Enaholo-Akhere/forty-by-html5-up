@@ -11,7 +11,7 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import { MESSAGE_ME } from '../../api/user-api';
 import { Toaster } from '../../providers/toast-provider';
 
-const Content3 = () => {
+const Content3 = ({ setShowExit }) => {
   const [loading, setLoading] = useState(false);
 
   const initialValues = {
@@ -39,6 +39,7 @@ const Content3 = () => {
     if (data) {
       setLoading(false);
       Toaster.success(data.message);
+      setShowExit((prev) => !prev);
       resetForm({ value: '' });
     }
   };

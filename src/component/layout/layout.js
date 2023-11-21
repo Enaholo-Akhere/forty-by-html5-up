@@ -8,12 +8,11 @@ import ExitIntent from '../forms/exit-intent';
 import { useExitIntentMobile } from '../../utils/exit-intent-mobile-hook';
 import { PopupWidget } from 'react-calendly';
 
-function Layout({ children, userData }) {
+function Layout({ children, userData, showExit, setShowExit }) {
   const { data } = useExitIntentMobile();
 
   const [show, setShow] = useState(false);
   const [showMobile, setShowMobile] = useState(false);
-  const [showExit, setShowExit] = useState(true);
 
   useEffect(() => {
     setShowMobile(data);

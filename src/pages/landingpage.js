@@ -18,6 +18,7 @@ const HeroPage = () => {
   const ref = useRef('');
   const [regForm, setRegForm] = useState('login');
   const [userData, setUserData] = useState({});
+  const [showExit, setShowExit] = useState(true);
   const [showModal, setShowModal] = useState(false);
 
   const urlParams = window.location.search;
@@ -42,7 +43,7 @@ const HeroPage = () => {
   }, [handleDecodedData]);
 
   return (
-    <Layout userData={userData}>
+    <Layout userData={userData} showExit={showExit} setShowExit={setShowExit}>
       <Modal show={showModal} setShow={setShowModal}>
         <SetNewPasswordForm token={token} />
       </Modal>
@@ -74,7 +75,7 @@ const HeroPage = () => {
         <TechStack />
       </Box>
       <Box ref={ref} id='Contact Me'>
-        <Content3 />
+        <Content3 showExit={showExit} setShowExit={setShowExit} />
       </Box>
 
       <ScrollTo />
