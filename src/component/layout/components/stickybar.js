@@ -10,11 +10,13 @@ import { logoutEnc } from '../../../utils/enc-dec-user';
 import { LOGOUT } from '../../../api/user-api';
 import { DOWNLOAD_RESUME } from '../../../api/user-api';
 import enas_logo from '../../../assets/enas_folio.png';
+import LoadingButton from '@mui/lab/LoadingButton';
 
 const StickyBar = ({ userData }) => {
   const [bgColor, setBgColor] = useState('');
   const [color, setColor] = useState('primary.main');
   const [copied, setCopied] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [onCurrent, setOnCurrent] = useState('Home');
   const [node, setNode] = useState(<div id=''></div>);
 
@@ -44,13 +46,16 @@ const StickyBar = ({ userData }) => {
   const leftStickyNav = ['Home', 'Projects', 'Competence', 'Contact'];
 
   const handleLogout = async () => {
+    setLoading((prev) => !prev);
     const { data, error } = await LOGOUT();
+    setLoading((prev) => !prev);
     if (error) {
       console.log(error.message);
     }
 
     if (data) {
       logoutEnc(process.env.REACT_APP_DEC_ENT);
+      setLoading((prev) => !prev);
       window.location.reload();
     }
   };
@@ -191,7 +196,8 @@ const StickyBar = ({ userData }) => {
             </Button>
           </Box>
           {userData && userData && (
-            <Button
+            <LoadingButton
+              loading={loading}
               endIcon={<LogoutIcon />}
               onClick={handleLogout}
               title='logout'
