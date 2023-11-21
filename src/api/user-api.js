@@ -4,7 +4,14 @@ import { decryptData } from '../utils/enc-dec-user';
 import { Toaster } from '../providers/toast-provider';
 
 export const api = process.env.REACT_APP_API_DEV;
-const baseUrl = process.env.REACT_APP_BASE_URL_DEV;
+export const apiProd = process.env.REACT_APP_API_PROD;
+
+const baseUrl =
+  process.env.NODE_ENV === 'production'
+    ? process.env.REACT_APP_API_PROD
+    : process.env.REACT_APP_API_DEV;
+
+console.log('api dev', api, 'api prod', apiProd, 'baseUrl', baseUrl);
 
 export const REGISTER_USER = async (userData) => {
   try {
@@ -30,6 +37,8 @@ export const LOGIN_USER = async (userData) => {
     return { data };
   } catch (error) {
     return { error };
+  } finally {
+    console.log('i got here finally block');
   }
 };
 
