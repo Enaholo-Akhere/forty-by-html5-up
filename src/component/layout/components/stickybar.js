@@ -192,7 +192,7 @@ const StickyBar = ({ userData }) => {
                 color: 'white',
               }}
             >
-              Download Resume
+              Resume
             </Button>
           </Box>
           {userData && userData && (
