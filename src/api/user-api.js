@@ -85,11 +85,10 @@ export const EDIT_ACCOUNT = async (name, userId) => {
 export const LOGOUT = async () => {
   const { data: userData } = await decryptData(process.env.REACT_APP_DEC_ENT);
   const { user_id } = userData;
-  // console.log('logout data token', token, userData);
 
   try {
     const { data } = await axios.put(`${baseUrl}/logout/${user_id}`, {});
-    console.log('data from log out', data);
+
     return { data };
   } catch (error) {
     return { error };

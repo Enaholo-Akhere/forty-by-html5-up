@@ -40,7 +40,7 @@ const EditAccountForm = ({ showModal, userData }) => {
       setLoading(false);
       resetForm({ value: '' });
       await encryptData(process.env.REACT_APP_DEC_ENT, data);
-      window.location.replace('http://localhost:3000');
+      window.location.reload();
     }
   };
 
