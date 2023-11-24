@@ -25,8 +25,17 @@ const Footer = () => {
             justifyContent: 'flex-start',
           }}
         >
-          {socialIcons.map((icons) => {
-            return <Box key={icons.id}>{icons.icon}</Box>;
+          {socialIcons.map((icon) => {
+            return (
+              <Box
+                component={'a'}
+                href={icon.url}
+                key={icon.id}
+                sx={{ color: 'black', '&:hover': { color: 'white' } }}
+              >
+                {icon.icon}
+              </Box>
+            );
           })}
         </Box>
         <Box
@@ -40,7 +49,7 @@ const Footer = () => {
         >
           <Typography
             sx={{
-              color: 'rgb(120, 120, 120)',
+              color: 'rgb(200, 200, 200)',
               fontFamily: 'Source Sans Pro, sans-serif',
               fontWeight: 400,
               marginRight: 1,
@@ -54,7 +63,7 @@ const Footer = () => {
           </Typography>
           <Typography
             sx={{
-              color: 'rgb(120, 120, 120)',
+              color: 'rgb(200, 200, 200)',
               fontFamily: 'Source Sans Pro, sans-serif',
               fontWeight: 400,
               borderLeft: { xs: 'none', md: '0.5px solid rgb(120, 120, 120)' },
@@ -73,14 +82,14 @@ const Footer = () => {
               fontWeight: 400,
               borderLeft: { xs: 'none', md: '0.5px solid rgb(120, 120, 120)' },
               marginRight: 1,
-              color: 'rgb(120, 120, 120)',
+              color: 'rgb(200, 200, 200)',
               zIndex: 10,
               fontSize: 14,
               paddingX: { xs: 'none', md: 3 },
               paddingY: 0.5,
             }}
           >
-            Demo Images: Unsplash
+            Demo Images: Pexels
           </Typography>
         </Box>
       </Container>
