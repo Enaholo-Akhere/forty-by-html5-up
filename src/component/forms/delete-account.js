@@ -4,6 +4,7 @@ import { DELETE_ACCOUNT } from '../../api/user-api';
 import LoadingButton from '@mui/lab/LoadingButton';
 import { useState } from 'react';
 import { Toaster } from '../../providers/toast-provider';
+import { logoutEnc } from '../../utils/enc-dec-user';
 
 const DeleteAccount = ({ userData }) => {
   const [loading, setLoading] = useState(false);
@@ -16,6 +17,7 @@ const DeleteAccount = ({ userData }) => {
       setLoading(false);
     }
     if (data) {
+      await logoutEnc(process.env.REACT_APP_DEC_ENT);
       setLoading(false);
       Toaster.success(data.message);
       window.location.reload('/');

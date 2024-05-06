@@ -11,8 +11,6 @@ const baseUrl =
     ? process.env.REACT_APP_API_PROD
     : process.env.REACT_APP_API_DEV;
 
-console.log('api dev', api, 'api prod', apiProd, 'baseUrl', baseUrl);
-
 export const REGISTER_USER = async (userData) => {
   try {
     const { data } = await axios.post(`${baseUrl}/register`, userData);
@@ -38,7 +36,7 @@ export const LOGIN_USER = async (userData) => {
   } catch (error) {
     return { error };
   } finally {
-    console.log('i got here finally block');
+    console.log('final operation');
   }
 };
 
@@ -98,7 +96,6 @@ export const LOGOUT = async () => {
 export const DELETE_ACCOUNT = async (userId) => {
   const { data: userData } = await decryptData(process.env.REACT_APP_DEC_ENT);
   const { token, refreshed_token } = userData;
-  console.log('data fro delete', token);
   try {
     const { data } = await axios.delete(
       `${baseUrl}/delete-user-account/${userId}`,

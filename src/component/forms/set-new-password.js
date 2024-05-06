@@ -19,7 +19,6 @@ const SetNewPasswordForm = ({ token }) => {
   const [show, setShow] = useState(true);
   const [loading, setLoading] = useState(false);
   const [ResMessage, setRespMessage] = useState('');
-  console.log('passs return', ResMessage);
 
   const initialValues = {
     password: '',
