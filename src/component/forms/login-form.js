@@ -51,7 +51,6 @@ const LoginForm = ({ setRegForm }) => {
       await encryptData(process.env.REACT_APP_DEC_ENT, data);
 
       setLoading(false);
-      console.log('data', data);
       window.location.replace('/');
       // resetForm({ value: {} });
     }

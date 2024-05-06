@@ -86,7 +86,7 @@ const NavAppBar = (props) => {
                   },
                 }}
               >
-                WITH REACT & MUI-5
+                WITH REACT
               </Typography>
             </Box>
 
