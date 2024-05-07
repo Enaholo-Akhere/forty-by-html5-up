@@ -233,6 +233,7 @@ const RegistrationForm = ({ setRegForm }) => {
                 sx={{
                   fontWeight: 300,
                   fontFamily: 'Source Sans Pro, sans-serif',
+                  width: 'fit-content',
                 }}
               >
                 Already have an account?{' '}
@@ -240,6 +241,10 @@ const RegistrationForm = ({ setRegForm }) => {
                   sx={{
                     cursor: 'pointer',
                     fontFamily: 'Source Sans Pro, sans-serif',
+                    fontWeight: 600,
+                    width: 'fit-content',
+                    color: 'black',
+                    textDecoration: 'none',
                   }}
                   onClick={() => setRegForm('login')}
                 >
