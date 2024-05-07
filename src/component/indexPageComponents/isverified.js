@@ -15,7 +15,7 @@ function Isverified({ loading, isData, error }) {
     >
       {loading && (
         <Typography>
-          <CircularProgress variant='determinate' value={75} />
+          <CircularProgress />
         </Typography>
       )}
       {error !== undefined && (
