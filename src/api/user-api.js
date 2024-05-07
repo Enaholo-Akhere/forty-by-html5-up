@@ -40,6 +40,17 @@ export const LOGIN_USER = async (userData) => {
   }
 };
 
+export const VERIFY_USER = async (userId, token) => {
+  try {
+    const { data } = await axios.put(`${baseUrl}/verify/${userId}/${token}`);
+    return { data };
+  } catch (error) {
+    return { error };
+  } finally {
+    console.log('final operation');
+  }
+};
+
 export const FORGOT_PASSWORD = async (email) => {
   try {
     const { data } = await axios.post(

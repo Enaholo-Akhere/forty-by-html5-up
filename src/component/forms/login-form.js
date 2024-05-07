@@ -175,6 +175,8 @@ const LoginForm = ({ setRegForm }) => {
                     fontWeight: 600,
                     fontFamily: 'Source Sans Pro, sans-serif',
                     cursor: 'pointer',
+                    color: 'black',
+                    textDecoration: 'none',
                   }}
                 >
                   Forgot password?
@@ -207,8 +209,11 @@ const LoginForm = ({ setRegForm }) => {
                 <Link
                   sx={{
                     cursor: 'pointer',
-
+                    fontWeight: 600,
+                    width: 'fit-content',
+                    color: 'black',
                     fontFamily: 'Source Sans Pro, sans-serif',
+                    textDecoration: 'none',
                   }}
                   onClick={() => setRegForm('register')}
                 >
