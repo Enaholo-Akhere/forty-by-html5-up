@@ -50,9 +50,9 @@ const HeroPage = () => {
         if (error) {
           setError(error);
           setLoading(false);
-          // setTimeout(() => {
-          //   window.location.replace('/');
-          // }, 3000);
+          setTimeout(() => {
+            window.location.replace('/');
+          }, 3000);
         }
 
         if (data) {
