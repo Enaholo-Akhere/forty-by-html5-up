@@ -5,7 +5,7 @@ import { Toaster } from '../providers/toast-provider';
 
 export const api = process.env.REACT_APP_API_DEV;
 export const apiProd = process.env.REACT_APP_API_PROD;
-const itWillWork = 'hello world';
+
 const baseUrl =
   process.env.NODE_ENV !== 'development'
     ? process.env.REACT_APP_API_PROD
